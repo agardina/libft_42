@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_tail.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/21 16:05:45 by agardina          #+#    #+#             */
-/*   Updated: 2019/04/21 17:02:30 by agardina         ###   ########.fr       */
+/*   Created: 2019/04/21 14:48:59 by agardina          #+#    #+#             */
+/*   Updated: 2019/04/24 13:01:40 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+void	ft_lstadd_tail(t_list **alst, t_list *new)
 {
 	t_list *ptr;
 
-	if (!alst || !*alst)
+	if (!alst || !new)
 		return ;
-	while (*alst)
+	if (!(ptr = *alst))
+		*alst = new;
+	else
 	{
-		ptr = (*alst)->next;
-		if (del != NULL)
-			(*del)((*alst)->content, (*alst)->content_size);
-		free(*alst);
-		*alst = NULL;
-		*alst = ptr;
+		while (ptr->next)
+		{
+			ptr = ptr->next;
+		}
+		ptr->next = new;
 	}
 }
