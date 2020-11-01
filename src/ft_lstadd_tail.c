@@ -23,9 +23,7 @@ void	ft_lstadd_tail(t_list **alst, t_list *new)
 	else
 	{
 		while (ptr->next)
-		{
 			ptr = ptr->next;
-		}
 		ptr->next = new;
 	}
 }
