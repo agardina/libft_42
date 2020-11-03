@@ -100,5 +100,8 @@ char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 int					get_next_line(const int fd, char **line);
+char				is_int_tab_sorted(int *tab, unsigned int size);
+void				print_int_tab(int *tab, unsigned int size);
+char				radix_sort(int *tab, unsigned int size);
 
 #endif
