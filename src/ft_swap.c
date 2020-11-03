@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_int_tab.c                                    :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/03 17:08:34 by agardina          #+#    #+#             */
-/*   Updated: 2020/11/03 17:10:48 by agardina         ###   ########.fr       */
+/*   Created: 2020/11/03 22:16:13 by agardina          #+#    #+#             */
+/*   Updated: 2020/11/03 22:16:14 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_prototypes.h"
-
-void	print_int_tab(int *tab, unsigned int size)
+void	ft_swap(int *a, int *b)
 {
-	unsigned int i;
+	int	tmp;
 
-	if (!tab)
+	if (!a || !b)
 		return ;
-	i = 0;
-	while (i < size)
-		ft_printf("%d ", tab[i++]);
-	ft_printf("\n");
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }

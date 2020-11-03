@@ -83,11 +83,13 @@ SRC_FILES = dict_create.c \
 				ft_strtrim.c \
 				ft_tolower.c \
 				ft_toupper.c \
+				ft_swap.c \
 				get_next_line.c \
 				hash.c \
 				is_int_tab_sorted.c \
 				print_int_tab.c \
-				radix_sort.c
+				radix_sort.c \
+				selection_sort.c
 
 PRINTF_SRC_FILES = bin.c \
 					buffer.c \
