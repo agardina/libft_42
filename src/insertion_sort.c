@@ -14,8 +14,8 @@
 
 void	insertion_sort(int *tab, unsigned int size)
 {
-	unsigned int	index_to_sort;
 	unsigned int	i;
+	unsigned int	index_to_sort;
 	int				insert_index;
 
 	if (!tab || size <= 1)

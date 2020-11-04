@@ -2,3 +2,4 @@
 *.a
 a.out
 main.c
+.DS_Store
