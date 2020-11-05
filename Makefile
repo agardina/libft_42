@@ -10,7 +10,8 @@ ERASE_LINE = "\\033[A\\033[K\\033[A"
 NAME = libft.a
 
 SRC_DIR = ./src/
-SRC_FILES = dict_create.c \
+SRC_FILES = bubble_sort.c \
+				dict_create.c \
 				dict_dump.c \
 				dict_get.c \
 				dict_set.c \

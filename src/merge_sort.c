@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf_prototypes.h"
 
 static void	sort_sub_table(int *tab, int imin, int imax, int *tmp)
 {

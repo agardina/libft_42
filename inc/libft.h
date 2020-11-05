@@ -28,6 +28,7 @@ typedef struct		s_word
 	int				len;
 }					t_word;
 
+void				bubble_sort(int *tab, unsigned int size);
 unsigned long long	ft_abs(long long int a);
 int					ft_atoi_base(char *str, char *base);
 int					ft_atoi(const char *str);
