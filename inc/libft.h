@@ -103,6 +103,7 @@ void				ft_swap(int *a, int *b);
 int					get_next_line(const int fd, char **line);
 void				insertion_sort(int *tab, unsigned int size);
 char				is_int_tab_sorted(int *tab, unsigned int size);
+void				merge_sort(int *tab, unsigned int size);
 void				print_int_tab(int *tab, unsigned int size);
 void				quicksort(int *tab, int imin, int imax);
 char				radix_sort(int *tab, unsigned int size);

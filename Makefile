@@ -88,6 +88,7 @@ SRC_FILES = dict_create.c \
 				hash.c \
 				insertion_sort.c \
 				is_int_tab_sorted.c \
+				merge_sort.c \
 				print_int_tab.c \
 				quicksort.c \
 				radix_sort.c \
