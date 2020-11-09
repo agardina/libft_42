@@ -24,7 +24,7 @@ typedef struct	s_int_vector
 
 char			int_vector_append(t_int_vector *vect, int nb);
 t_int_vector	*int_vector_create(void);
-void			*int_vector_print(t_int_vector *vect);
+void			int_vector_print(t_int_vector *vect);
 t_int_vector	*int_vector_realloc(t_int_vector *old);
 
 #endif
