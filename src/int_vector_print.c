@@ -16,6 +16,8 @@ void	int_vector_print(t_int_vector *vect)
 {
 	unsigned int	i;
 
+	if (!vect)
+		return ;
 	i = 0;
 	while (i < vect->length)
 		ft_printf("%d\n", vect->tab[i++]);
