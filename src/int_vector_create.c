@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertion_sort.c                                   :+:      :+:    :+:   */
+/*   int_vector_create.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 01:31:40 by agardina          #+#    #+#             */
-/*   Updated: 2020/11/04 01:31:42 by agardina         ###   ########.fr       */
+/*   Created: 2020/11/09 16:35:47 by agardina          #+#    #+#             */
+/*   Updated: 2020/11/09 16:35:48 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	insertion_sort(int *tab, unsigned int size)
+t_int_vector	*int_vector_create(void)
 {
-	unsigned int	i;
-	unsigned int	index_to_sort;
-	int				insert_index;
+	t_int_vector	*new;
 
-	if (!tab || size < 2)
-		return ;
-	index_to_sort = 1;
-	while (!is_int_tab_sorted(tab, size))
-	{
-		insert_index = 0;
-		while (tab[insert_index] < tab[index_to_sort])
-			insert_index++;
-		i = index_to_sort;
-		while (insert_index < (int)i)
-		{
-			ft_swap(&tab[i - 1], &tab[i]);
-			i--;
-		}
-		index_to_sort++;
-	}
+	new = (t_int_vector*)ft_memalloc(sizeof(t_int_vector));
+	if (!new)
+		return (NULL);
+	new->tab = (int*)ft_memalloc(sizeof(int) * INT_VECTOR_INIT_SIZE);
+	if (!new->tab)
+		return (NULL);
+	new->total_size = INT_VECTOR_INIT_SIZE;
+	new->length = 0;
+	return (new);
 }

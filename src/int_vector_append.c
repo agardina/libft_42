@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertion_sort.c                                   :+:      :+:    :+:   */
+/*   int_vector_append.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 01:31:40 by agardina          #+#    #+#             */
-/*   Updated: 2020/11/04 01:31:42 by agardina         ###   ########.fr       */
+/*   Created: 2020/11/09 16:35:35 by agardina          #+#    #+#             */
+/*   Updated: 2020/11/09 16:35:37 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	insertion_sort(int *tab, unsigned int size)
+char			int_vector_append(t_int_vector *vect, int nb)
 {
-	unsigned int	i;
-	unsigned int	index_to_sort;
-	int				insert_index;
-
-	if (!tab || size < 2)
-		return ;
-	index_to_sort = 1;
-	while (!is_int_tab_sorted(tab, size))
+	if (!vect)
+		return (1);
+	if (vect->length == vect->total_size)
 	{
-		insert_index = 0;
-		while (tab[insert_index] < tab[index_to_sort])
-			insert_index++;
-		i = index_to_sort;
-		while (insert_index < (int)i)
-		{
-			ft_swap(&tab[i - 1], &tab[i]);
-			i--;
-		}
-		index_to_sort++;
+		vect = int_vector_realloc(vect);
+		if (!vect)
+			return (1);
 	}
+	vect->tab[vect->length] = nb;
+	vect->length++;
+	return (0);
 }

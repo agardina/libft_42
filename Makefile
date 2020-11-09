@@ -88,6 +88,9 @@ SRC_FILES = bubble_sort.c \
 				get_next_line.c \
 				hash.c \
 				insertion_sort.c \
+				int_vector_append.c \
+				int_vector_create.c \
+				int_vector_realloc.c \
 				is_int_tab_sorted.c \
 				merge_sort.c \
 				print_int_tab.c \

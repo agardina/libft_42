@@ -71,7 +71,7 @@ char				radix_sort(int *tab, unsigned int size)
 	unsigned int	loop_nb;
 	int				*new_tab;
 
-	if (!tab)
+	if (!tab || size < 2)
 		return (1);
 	div = 1;
 	loop_nb = get_loop_nb(tab, size);

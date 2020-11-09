@@ -14,6 +14,8 @@
 # define LIBFT_H
 # include <string.h>
 # include "get_next_line.h"
+# include "ft_printf_prototypes.h"
+# include "int_vectors.h"
 
 typedef struct		s_list
 {

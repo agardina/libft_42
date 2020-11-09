@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf_prototypes.h"
 
 static unsigned int	index_of_max(int *tab, unsigned int size)
 {
@@ -38,7 +37,7 @@ void				selection_sort(int *tab, unsigned int size)
 {
 	int	last_index;
 
-	if (!tab || !size)
+	if (!tab || size < 2)
 		return ;
 	last_index = (int)size - 1;
 	while (!is_int_tab_sorted(tab, size) && 0 <= last_index)
