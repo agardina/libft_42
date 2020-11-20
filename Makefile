@@ -28,80 +28,36 @@ HDR = $(addprefix $(HDR_DIR), $(HDR_FILES))
 
 SRC_DIR = ./src/
 
-# Src_files
-SRC_FILES += ft_abs.c
-SRC_FILES += ft_atoi.c
-SRC_FILES += ft_atoi_base.c
-SRC_FILES += ft_atol.c
-SRC_FILES += ft_bzero.c
-SRC_FILES += ft_convert_base.c
-SRC_FILES += ft_isalnum.c
-SRC_FILES += ft_isalpha.c
-SRC_FILES += ft_isascii.c
-SRC_FILES += ft_isdigit.c
-SRC_FILES += ft_isprint.c
-SRC_FILES += ft_itoa.c
-SRC_FILES += ft_itoa_base_str.c
-SRC_FILES += ft_max.c
-SRC_FILES += ft_memalloc.c
-SRC_FILES += ft_memccpy.c
-SRC_FILES += ft_memchr.c
-SRC_FILES += ft_memcmp.c
-SRC_FILES += ft_memcpy.c
-SRC_FILES += ft_memdel.c
-SRC_FILES += ft_memmove.c
-SRC_FILES += ft_memset.c
-SRC_FILES += ft_min.c
-SRC_FILES += ft_putchar.c
-SRC_FILES += ft_putchar_fd.c
-SRC_FILES += ft_putendl.c
-SRC_FILES += ft_putendl_fd.c
-SRC_FILES += ft_putnbr.c
-SRC_FILES += ft_putnbr_fd.c
-SRC_FILES += ft_putstr.c
-SRC_FILES += ft_putstr_fd.c
-SRC_FILES += ft_split.c
-SRC_FILES += ft_sqrt.c
-SRC_FILES += ft_strcat.c
-SRC_FILES += ft_strcdup.c
-SRC_FILES += ft_strchr.c
-SRC_FILES += ft_strclr.c
-SRC_FILES += ft_strcmp.c
-SRC_FILES += ft_strcpy.c
-SRC_FILES += ft_strdel.c
-SRC_FILES += ft_strdup.c
-SRC_FILES += ft_strequ.c
-SRC_FILES += ft_striter.c
-SRC_FILES += ft_striteri.c
-SRC_FILES += ft_strjoin.c
-SRC_FILES += ft_strlcat.c
-SRC_FILES += ft_strlen.c
-SRC_FILES += ft_strmap.c
-SRC_FILES += ft_strmapi.c
-SRC_FILES += ft_strncat.c
-SRC_FILES += ft_strncmp.c
-SRC_FILES += ft_strncpy.c
-SRC_FILES += ft_strnequ.c
-SRC_FILES += ft_strnew.c
-SRC_FILES += ft_strnstr.c
-SRC_FILES += ft_strrchr.c
-SRC_FILES += ft_strsplit.c
-SRC_FILES += ft_strstr.c
-SRC_FILES += ft_strsub.c
-SRC_FILES += ft_strtrim.c
-SRC_FILES += ft_tolower.c
-SRC_FILES += ft_toupper.c
-SRC_FILES += ft_swap.c
-SRC_FILES += get_next_line.c
-SRC_FILES += hash.c
-SRC_FILES += is_int_tab_sorted.c
-SRC_FILES += print_int_tab.c
+# Char
+SRC_FILES += char/ft_isalnum.c
+SRC_FILES += char/ft_isalpha.c
+SRC_FILES += char/ft_isprint.c
+SRC_FILES += char/ft_tolower.c
+SRC_FILES += char/ft_toupper.c
+
+# Conversion
+SRC_FILES += conversion/ft_atoi.c
+SRC_FILES += conversion/ft_atoi_base.c
+SRC_FILES += conversion/ft_atol.c
+SRC_FILES += conversion/ft_convert_base.c
+SRC_FILES += conversion/ft_itoa.c
+SRC_FILES += conversion/ft_itoa_base_str.c
 
 # Dict
 SRC_FILES += dict/dict_create.c
 SRC_FILES += dict/dict_dump.c
 SRC_FILES += dict/dict_get.c
 SRC_FILES += dict/dict_set.c
+
+# Display
+SRC_FILES += display/ft_putchar.c
+SRC_FILES += display/ft_putchar_fd.c
+SRC_FILES += display/ft_putendl.c
+SRC_FILES += display/ft_putendl_fd.c
+SRC_FILES += display/ft_putnbr.c
+SRC_FILES += display/ft_putnbr_fd.c
+SRC_FILES += display/ft_putstr.c
+SRC_FILES += display/ft_putstr_fd.c
 
 # ft_printf
 SRC_FILES += ft_printf/bin.c
@@ -134,6 +90,13 @@ SRC_FILES += ft_printf/floats/store_dbl.c
 SRC_FILES += ft_printf/floats/store_ldbl.c
 SRC_FILES += ft_printf/floats/utils.c
 
+# Get_next_line
+SRC_FILES += get_next_line/get_next_line.c
+
+# Int tab
+SRC_FILES += int_tab/is_int_tab_sorted.c
+SRC_FILES += int_tab/print_int_tab.c
+
 # Int vector
 SRC_FILES += int_vector/int_vector_append.c
 SRC_FILES += int_vector/int_vector_create.c
@@ -151,6 +114,27 @@ SRC_FILES += list/ft_lstiter.c
 SRC_FILES += list/ft_lstmap.c
 SRC_FILES += list/ft_lstnew.c
 SRC_FILES += list/ft_lstsize.c
+
+# Maths
+SRC_FILES += maths/ft_abs.c
+SRC_FILES += maths/ft_max.c
+SRC_FILES += maths/ft_min.c
+SRC_FILES += maths/ft_sqrt.c
+
+# Memory
+SRC_FILES += memory/ft_bzero.c
+SRC_FILES += memory/ft_memalloc.c
+SRC_FILES += memory/ft_memccpy.c
+SRC_FILES += memory/ft_memchr.c
+SRC_FILES += memory/ft_memcmp.c
+SRC_FILES += memory/ft_memcpy.c
+SRC_FILES += memory/ft_memdel.c
+SRC_FILES += memory/ft_memmove.c
+SRC_FILES += memory/ft_memset.c
+
+# Other
+SRC_FILES += other/ft_swap.c
+SRC_FILES += other/hash.c
 
 # Queue
 SRC_FILES += queue/queue_dequeue.c
@@ -174,6 +158,36 @@ SRC_FILES += stack/stack_pop.c
 SRC_FILES += stack/stack_push.c
 SRC_FILES += stack/stack_size.c
 
+# String
+SRC_FILES += string/ft_split.c
+SRC_FILES += string/ft_strcat.c
+SRC_FILES += string/ft_strcdup.c
+SRC_FILES += string/ft_strchr.c
+SRC_FILES += string/ft_strclr.c
+SRC_FILES += string/ft_strcmp.c
+SRC_FILES += string/ft_strcpy.c
+SRC_FILES += string/ft_strdel.c
+SRC_FILES += string/ft_strdup.c
+SRC_FILES += string/ft_strequ.c
+SRC_FILES += string/ft_striter.c
+SRC_FILES += string/ft_striteri.c
+SRC_FILES += string/ft_strjoin.c
+SRC_FILES += string/ft_strlcat.c
+SRC_FILES += string/ft_strlen.c
+SRC_FILES += string/ft_strmap.c
+SRC_FILES += string/ft_strmapi.c
+SRC_FILES += string/ft_strncat.c
+SRC_FILES += string/ft_strncmp.c
+SRC_FILES += string/ft_strncpy.c
+SRC_FILES += string/ft_strnequ.c
+SRC_FILES += string/ft_strnew.c
+SRC_FILES += string/ft_strnstr.c
+SRC_FILES += string/ft_strrchr.c
+SRC_FILES += string/ft_strsplit.c
+SRC_FILES += string/ft_strstr.c
+SRC_FILES += string/ft_strsub.c
+SRC_FILES += string/ft_strtrim.c
+
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 ## OBJECT FILES
@@ -194,14 +208,23 @@ $(NAME): $(OBJ_DIR) $(OBJ)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/char
+	@mkdir -p $(OBJ_DIR)/conversion
 	@mkdir -p $(OBJ_DIR)/dict
+	@mkdir -p $(OBJ_DIR)/display
 	@mkdir -p $(OBJ_DIR)/ft_printf
 	@mkdir -p $(OBJ_DIR)/ft_printf/floats
+	@mkdir -p $(OBJ_DIR)/get_next_line
+	@mkdir -p $(OBJ_DIR)/int_tab
 	@mkdir -p $(OBJ_DIR)/int_vector
 	@mkdir -p $(OBJ_DIR)/list
+	@mkdir -p $(OBJ_DIR)/maths
+	@mkdir -p $(OBJ_DIR)/memory
+	@mkdir -p $(OBJ_DIR)/other
 	@mkdir -p $(OBJ_DIR)/queue
 	@mkdir -p $(OBJ_DIR)/sort
 	@mkdir -p $(OBJ_DIR)/stack
+	@mkdir -p $(OBJ_DIR)/string
 
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c $(HDR) Makefile
 	@$(CC) $(CFLAGS) -I$(HDR_DIR) -c -o $@ $<
