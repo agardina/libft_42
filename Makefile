@@ -1,144 +1,17 @@
-#FORMATTING
+## FORMATTING
 
 GREEN = "\\033[32m"
 BOLD = "\\033[1m"
 RESET_FORMAT = "\\033[0m"
 ERASE_LINE = "\\033[A\\033[K\\033[A"
 
-#COMPILATION
+## COMPILATION
 
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 
-SRC_DIR = ./src/
-SRC_FILES = bubble_sort.c \
-				dict_create.c \
-				dict_dump.c \
-				dict_get.c \
-				dict_set.c \
-				ft_abs.c \
-				ft_atoi.c \
-				ft_atoi_base.c \
-				ft_atol.c \
-				ft_bzero.c \
-				ft_convert_base.c \
-				ft_isalnum.c \
-				ft_isalpha.c \
-				ft_isascii.c \
-				ft_isdigit.c \
-				ft_isprint.c \
-				ft_itoa.c \
-				ft_itoa_base_str.c \
-				ft_lstadd.c \
-				ft_lstadd_tail.c \
-				ft_lstdel.c \
-				ft_lstdelone.c \
-				ft_lstiter.c \
-				ft_lstmap.c \
-				ft_lstnew.c \
-				ft_lstsize.c \
-				ft_max.c \
-				ft_memalloc.c \
-				ft_memccpy.c \
-				ft_memchr.c \
-				ft_memcmp.c \
-				ft_memcpy.c \
-				ft_memdel.c \
-				ft_memmove.c \
-				ft_memset.c \
-				ft_min.c \
-				ft_putchar.c \
-				ft_putchar_fd.c \
-				ft_putendl.c \
-				ft_putendl_fd.c \
-				ft_putnbr.c \
-				ft_putnbr_fd.c \
-				ft_putstr.c \
-				ft_putstr_fd.c \
-				ft_split.c \
-				ft_sqrt.c \
-				ft_strcat.c \
-				ft_strcdup.c \
-				ft_strchr.c \
-				ft_strclr.c \
-				ft_strcmp.c \
-				ft_strcpy.c \
-				ft_strdel.c \
-				ft_strdup.c \
-				ft_strequ.c \
-				ft_striter.c \
-				ft_striteri.c \
-				ft_strjoin.c \
-				ft_strlcat.c \
-				ft_strlen.c \
-				ft_strmap.c \
-				ft_strmapi.c \
-				ft_strncat.c \
-				ft_strncmp.c \
-				ft_strncpy.c \
-				ft_strnequ.c \
-				ft_strnew.c \
-				ft_strnstr.c \
-				ft_strrchr.c \
-				ft_strsplit.c \
-				ft_strstr.c \
-				ft_strsub.c \
-				ft_strtrim.c \
-				ft_tolower.c \
-				ft_toupper.c \
-				ft_swap.c \
-				get_next_line.c \
-				hash.c \
-				insertion_sort.c \
-				int_vector_append.c \
-				int_vector_create.c \
-				int_vector_destroy.c \
-				int_vector_print.c \
-				int_vector_realloc.c \
-				is_int_tab_sorted.c \
-				is_int_vector_sorted.c \
-				merge_sort.c \
-				print_int_tab.c \
-				quicksort.c \
-				radix_sort.c \
-				selection_sort.c
-
-PRINTF_SRC_FILES = bin.c \
-					buffer.c \
-					buffer2.c \
-					char.c \
-					colors.c \
-					hex.c \
-					int_utils.c \
-					loop.c \
-					oct.c \
-					parsing.c \
-					parsing_bis.c \
-					parsing_utils.c \
-					pointers.c \
-					signed.c \
-					string.c \
-					unsigned.c \
-					floats/deal_inf_nan.c \
-					floats/double.c \
-					floats/get_bigint_info.c \
-					floats/long_double.c \
-					floats/op.c \
-					floats/print_big_dbl.c \
-					floats/print_dec_part.c \
-					floats/print_int_part.c \
-					floats/print_small_dbl.c \
-					floats/round_up.c \
-					floats/store_dbl.c \
-					floats/store_ldbl.c \
-					floats/utils.c
-PRINTF_SRC_DIR = ft_printf/
-PRINTF_SRC = $(addprefix $(PRINTF_SRC_DIR), $(PRINTF_SRC_FILES))
-SRC_FILES += $(PRINTF_SRC)
-SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
-
-OBJ_DIR = ./obj/
-OBJ_FILES = $(SRC_FILES:.c=.o)
-OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
+## HEADERS
 
 HDR_DIR = ./inc/
 HDR_FILES = dict.h \
@@ -146,25 +19,191 @@ HDR_FILES = dict.h \
 				ft_printf_structs.h \
 				get_next_line.h \
 				int_vectors.h \
-				libft.h
+				libft.h \
+				queue.h \
+				stack.h \
 HDR = $(addprefix $(HDR_DIR), $(HDR_FILES))
 
-CC = gcc
+## SOURCES
 
-CFLAGS = -Wall -Wextra -Werror
+SRC_DIR = ./src/
+
+# Src_files
+SRC_FILES += ft_abs.c
+SRC_FILES += ft_atoi.c
+SRC_FILES += ft_atoi_base.c
+SRC_FILES += ft_atol.c
+SRC_FILES += ft_bzero.c
+SRC_FILES += ft_convert_base.c
+SRC_FILES += ft_isalnum.c
+SRC_FILES += ft_isalpha.c
+SRC_FILES += ft_isascii.c
+SRC_FILES += ft_isdigit.c
+SRC_FILES += ft_isprint.c
+SRC_FILES += ft_itoa.c
+SRC_FILES += ft_itoa_base_str.c
+SRC_FILES += ft_max.c
+SRC_FILES += ft_memalloc.c
+SRC_FILES += ft_memccpy.c
+SRC_FILES += ft_memchr.c
+SRC_FILES += ft_memcmp.c
+SRC_FILES += ft_memcpy.c
+SRC_FILES += ft_memdel.c
+SRC_FILES += ft_memmove.c
+SRC_FILES += ft_memset.c
+SRC_FILES += ft_min.c
+SRC_FILES += ft_putchar.c
+SRC_FILES += ft_putchar_fd.c
+SRC_FILES += ft_putendl.c
+SRC_FILES += ft_putendl_fd.c
+SRC_FILES += ft_putnbr.c
+SRC_FILES += ft_putnbr_fd.c
+SRC_FILES += ft_putstr.c
+SRC_FILES += ft_putstr_fd.c
+SRC_FILES += ft_split.c
+SRC_FILES += ft_sqrt.c
+SRC_FILES += ft_strcat.c
+SRC_FILES += ft_strcdup.c
+SRC_FILES += ft_strchr.c
+SRC_FILES += ft_strclr.c
+SRC_FILES += ft_strcmp.c
+SRC_FILES += ft_strcpy.c
+SRC_FILES += ft_strdel.c
+SRC_FILES += ft_strdup.c
+SRC_FILES += ft_strequ.c
+SRC_FILES += ft_striter.c
+SRC_FILES += ft_striteri.c
+SRC_FILES += ft_strjoin.c
+SRC_FILES += ft_strlcat.c
+SRC_FILES += ft_strlen.c
+SRC_FILES += ft_strmap.c
+SRC_FILES += ft_strmapi.c
+SRC_FILES += ft_strncat.c
+SRC_FILES += ft_strncmp.c
+SRC_FILES += ft_strncpy.c
+SRC_FILES += ft_strnequ.c
+SRC_FILES += ft_strnew.c
+SRC_FILES += ft_strnstr.c
+SRC_FILES += ft_strrchr.c
+SRC_FILES += ft_strsplit.c
+SRC_FILES += ft_strstr.c
+SRC_FILES += ft_strsub.c
+SRC_FILES += ft_strtrim.c
+SRC_FILES += ft_tolower.c
+SRC_FILES += ft_toupper.c
+SRC_FILES += ft_swap.c
+SRC_FILES += get_next_line.c
+SRC_FILES += hash.c
+SRC_FILES += is_int_tab_sorted.c
+SRC_FILES += print_int_tab.c
+
+# Dict
+SRC_FILES += dict/dict_create.c
+SRC_FILES += dict/dict_dump.c
+SRC_FILES += dict/dict_get.c
+SRC_FILES += dict/dict_set.c
+
+# ft_printf
+SRC_FILES += ft_printf/bin.c
+SRC_FILES += ft_printf/buffer.c
+SRC_FILES += ft_printf/buffer2.c
+SRC_FILES += ft_printf/char.c
+SRC_FILES += ft_printf/colors.c
+SRC_FILES += ft_printf/hex.c
+SRC_FILES += ft_printf/int_utils.c
+SRC_FILES += ft_printf/loop.c
+SRC_FILES += ft_printf/oct.c
+SRC_FILES += ft_printf/parsing.c
+SRC_FILES += ft_printf/parsing_bis.c
+SRC_FILES += ft_printf/parsing_utils.c
+SRC_FILES += ft_printf/pointers.c
+SRC_FILES += ft_printf/signed.c
+SRC_FILES += ft_printf/string.c
+SRC_FILES += ft_printf/unsigned.c
+SRC_FILES += ft_printf/floats/deal_inf_nan.c
+SRC_FILES += ft_printf/floats/double.c
+SRC_FILES += ft_printf/floats/get_bigint_info.c
+SRC_FILES += ft_printf/floats/long_double.c
+SRC_FILES += ft_printf/floats/op.c
+SRC_FILES += ft_printf/floats/print_big_dbl.c
+SRC_FILES += ft_printf/floats/print_dec_part.c
+SRC_FILES += ft_printf/floats/print_int_part.c
+SRC_FILES += ft_printf/floats/print_small_dbl.c
+SRC_FILES += ft_printf/floats/round_up.c
+SRC_FILES += ft_printf/floats/store_dbl.c
+SRC_FILES += ft_printf/floats/store_ldbl.c
+SRC_FILES += ft_printf/floats/utils.c
+
+# Int vector
+SRC_FILES += int_vector/int_vector_append.c
+SRC_FILES += int_vector/int_vector_create.c
+SRC_FILES += int_vector/int_vector_destroy.c
+SRC_FILES += int_vector/int_vector_print.c
+SRC_FILES += int_vector/int_vector_realloc.c
+SRC_FILES += int_vector/is_int_vector_sorted.c
+
+# List
+SRC_FILES += list/ft_lstadd.c
+SRC_FILES += list/ft_lstadd_tail.c
+SRC_FILES += list/ft_lstdel.c
+SRC_FILES += list/ft_lstdelone.c
+SRC_FILES += list/ft_lstiter.c
+SRC_FILES += list/ft_lstmap.c
+SRC_FILES += list/ft_lstnew.c
+SRC_FILES += list/ft_lstsize.c
+
+# Queue
+SRC_FILES += queue/queue_dequeue.c
+SRC_FILES += queue/queue_destroy.c
+SRC_FILES += queue/queue_enqueue.c
+SRC_FILES += queue/queue_peek.c
+SRC_FILES += queue/queue_size.c
+
+# Sort
+SRC_FILES += sort/bubble_sort.c
+SRC_FILES += sort/insertion_sort.c
+SRC_FILES += sort/merge_sort.c
+SRC_FILES += sort/quicksort.c
+SRC_FILES += sort/radix_sort.c
+SRC_FILES += sort/selection_sort.c
+
+# Stack
+SRC_FILES += stack/stack_destroy.c
+SRC_FILES += stack/stack_peek.c
+SRC_FILES += stack/stack_pop.c
+SRC_FILES += stack/stack_push.c
+SRC_FILES += stack/stack_size.c
+
+SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
+
+## OBJECT FILES
+
+OBJ_DIR = ./obj/
+OBJ_FILES = $(SRC_FILES:.c=.o)
+OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
+
+## RULES
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ_DIR) $(OBJ)
 	@echo "Object files related to libft created"
 	@ar -rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@echo "$(BOLD)$(NAME)$(RESET_FORMAT) [$(GREEN)OK$(RESET_FORMAT)]"
 
-$(OBJ_DIR)%.o:$(SRC_DIR)%.c $(HDR)
+$(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/dict
 	@mkdir -p $(OBJ_DIR)/ft_printf
 	@mkdir -p $(OBJ_DIR)/ft_printf/floats
+	@mkdir -p $(OBJ_DIR)/int_vector
+	@mkdir -p $(OBJ_DIR)/list
+	@mkdir -p $(OBJ_DIR)/queue
+	@mkdir -p $(OBJ_DIR)/sort
+	@mkdir -p $(OBJ_DIR)/stack
+
+$(OBJ_DIR)%.o:$(SRC_DIR)%.c $(HDR) Makefile
 	@$(CC) $(CFLAGS) -I$(HDR_DIR) -c -o $@ $<
 	@echo "Compiled: $*.o [$(GREEN)OK$(RESET_FORMAT)]"
 	@echo "$(ERASE_LINE)"

@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   stack_push.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 11:43:45 by agardina          #+#    #+#             */
-/*   Updated: 2020/01/28 11:43:52 by agardina         ###   ########.fr       */
+/*   Created: 2020/11/20 12:05:42 by agardina          #+#    #+#             */
+/*   Updated: 2020/11/20 12:05:44 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "stack.h"
 
-unsigned long long int	ft_abs(long long int a)
+int	stack_push(t_stack **stack, const void *content)
 {
-	return (a >= 0 ? (unsigned long long)a : (unsigned long long)-a);
+	t_stack	*new;
+
+	if (!(new = ft_lstnew(content, sizeof(*content))))
+		return (-1);
+	ft_lstadd(stack, ft_lstnew(content, sizeof(*content)));
+	return (0);
 }

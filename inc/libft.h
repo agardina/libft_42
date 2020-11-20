@@ -16,19 +16,21 @@
 # include "get_next_line.h"
 # include "ft_printf_prototypes.h"
 # include "int_vectors.h"
-
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
+# include "list.h"
+# include "queue.h"
+# include "stack.h"
 
 typedef struct		s_word
 {
 	int				start;
 	int				len;
 }					t_word;
+
+typedef enum		e_bool
+{
+	false,
+	true
+}					t_bool;
 
 void				bubble_sort(int *tab, unsigned int size);
 unsigned long long	ft_abs(long long int a);
@@ -44,15 +46,6 @@ int					ft_isdigit(int c);
 int					ft_isprint(int c);
 char				*ft_itoa(int n);
 char				*ft_itoa_base_str(int nbr, char *base);
-void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstadd_tail(t_list **alst, t_list *new);
-void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstdelone(t_list **alst, void (*del)(void *,
-			size_t content_size));
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-t_list				*ft_lstnew(void const *content, size_t content_size);
-unsigned int		ft_lstsize(t_list *list);
 int					ft_max(int a, int b);
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
