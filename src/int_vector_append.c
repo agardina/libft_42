@@ -12,17 +12,18 @@
 
 #include "libft.h"
 
-char			int_vector_append(t_int_vector *vect, int nb)
+char			int_vector_append(t_int_vector **vect, int nb)
 {
-	if (!vect)
+	if (!vect || !*vect || !(*vect)->tab)
 		return (1);
-	if (vect->length == vect->total_size)
+	if ((*vect)->length == (*vect)->total_size)
 	{
-		vect = int_vector_realloc(vect);
+		*vect = int_vector_realloc(*vect);
+		ft_printf("OK\n");
 		if (!vect)
 			return (1);
 	}
-	vect->tab[vect->length] = nb;
-	vect->length++;
+	(*vect)->tab[(*vect)->length] = nb;
+	(*vect)->length++;
 	return (0);
 }

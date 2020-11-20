@@ -18,16 +18,21 @@ t_int_vector	*int_vector_realloc(t_int_vector *old)
 
 	if (!old)
 		return (NULL);
-	new = (t_int_vector*)ft_memalloc(sizeof(t_int_vector));
-	if (!new)
+	if (!(new = (t_int_vector*)ft_memalloc(sizeof(t_int_vector))))
 		return (NULL);
-	new->tab = (int*)ft_memalloc(sizeof(int) * old->total_size * 2);
+	if (!(new->tab = (int*)ft_memalloc(sizeof(int) * old->total_size * 2)))
+	{
+		free(new);
+		new = NULL;
+		free(old->tab);
+		old->tab = NULL;
+		free(old);
+		old = NULL;
+	}
 	new->total_size = old->total_size * 2;
 	new->length = old->length;
-	ft_memcpy(new, old, sizeof(int) * old->total_size);
-	free(old->tab);
-	old->tab = NULL;
-	free(old);
-	old = NULL;
+	if (old->tab)
+		ft_memcpy(new->tab, old->tab, sizeof(int) * old->total_size);
+	int_vector_destroy(&old);
 	return (new);
 }

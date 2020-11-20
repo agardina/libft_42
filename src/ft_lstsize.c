@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_vector_print.c                                 :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 17:06:21 by agardina          #+#    #+#             */
-/*   Updated: 2020/11/09 17:06:22 by agardina         ###   ########.fr       */
+/*   Created: 2020/11/09 22:33:36 by agardina          #+#    #+#             */
+/*   Updated: 2020/11/09 22:33:37 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	int_vector_print(t_int_vector *vect)
+unsigned int	ft_lstsize(t_list *list)
 {
-	unsigned int	i;
+	t_list			*ptr;
+	unsigned int	size;
 
-	if (!vect || !vect->tab)
-		return ;
-	i = 0;
-	while (i < vect->length)
-		ft_printf("%d\n", vect->tab[i++]);
+	if (!list)
+		return (0);
+	size = 0;
+	ptr = list;
+	while (ptr)
+	{
+		size++;
+		ptr = ptr->next;
+	}
+	return (size);
 }

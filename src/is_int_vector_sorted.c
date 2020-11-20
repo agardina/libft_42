@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_vector_print.c                                 :+:      :+:    :+:   */
+/*   is_int_vector_sorted.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 17:06:21 by agardina          #+#    #+#             */
-/*   Updated: 2020/11/09 17:06:22 by agardina         ###   ########.fr       */
+/*   Created: 2020/11/09 18:51:16 by agardina          #+#    #+#             */
+/*   Updated: 2020/11/09 18:51:17 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	int_vector_print(t_int_vector *vect)
+char	is_int_vector_sorted(t_int_vector *vect)
 {
-	unsigned int	i;
-
-	if (!vect || !vect->tab)
-		return ;
-	i = 0;
-	while (i < vect->length)
-		ft_printf("%d\n", vect->tab[i++]);
+	if (!vect)
+		return (0);
+	if (vect->length == 1)
+		return (1);
+	return (is_int_tab_sorted(vect->tab, vect->length));
 }

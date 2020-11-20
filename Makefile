@@ -35,6 +35,7 @@ SRC_FILES = bubble_sort.c \
 				ft_lstiter.c \
 				ft_lstmap.c \
 				ft_lstnew.c \
+				ft_lstsize.c \
 				ft_max.c \
 				ft_memalloc.c \
 				ft_memccpy.c \
@@ -90,9 +91,11 @@ SRC_FILES = bubble_sort.c \
 				insertion_sort.c \
 				int_vector_append.c \
 				int_vector_create.c \
+				int_vector_destroy.c \
 				int_vector_print.c \
 				int_vector_realloc.c \
 				is_int_tab_sorted.c \
+				is_int_vector_sorted.c \
 				merge_sort.c \
 				print_int_tab.c \
 				quicksort.c \
@@ -142,6 +145,7 @@ HDR_FILES = dict.h \
 				ft_printf_prototypes.h \
 				ft_printf_structs.h \
 				get_next_line.h \
+				int_vectors.h \
 				libft.h
 HDR = $(addprefix $(HDR_DIR), $(HDR_FILES))
 
