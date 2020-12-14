@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/05 13:43:13 by agardina          #+#    #+#             */
-/*   Updated: 2020/11/05 13:43:14 by agardina         ###   ########.fr       */
+/*   Created: 2020/12/14 17:00:10 by agardina          #+#    #+#             */
+/*   Updated: 2020/12/14 17:00:19 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,20 @@ void	bubble_sort(int *tab, unsigned int size)
 {
 	unsigned int i;
 	unsigned int j;
-	unsigned int index_sorted;
 
-	if (!tab || size < 2)
+	if (!tab || size <= 1)
 		return ;
-	index_sorted = size;
-	while (!is_int_tab_sorted(tab, size))
+	i = size - 1;
+	while (0 < i)
 	{
-		i = 0;
-		j = 1;
-		while (j < index_sorted)
+		j = 0;
+		while (j < i)
 		{
-			if (tab[j] < tab[i])
-				ft_swap(&tab[j], &tab[i]);
-			i++;
+			if (tab[j + 1] < tab[j])
+				ft_swap(&tab[j], &tab[j + 1]);
 			j++;
 		}
-		index_sorted--;
+		i--;
 	}
+	return ;
 }

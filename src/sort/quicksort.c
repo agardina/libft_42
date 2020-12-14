@@ -5,35 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 17:47:27 by agardina          #+#    #+#             */
-/*   Updated: 2020/11/04 17:47:29 by agardina         ###   ########.fr       */
+/*   Created: 2020/12/14 17:00:36 by agardina          #+#    #+#             */
+/*   Updated: 2020/12/14 17:00:40 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	quicksort(int *tab, int imin, int imax)
+static void	partition(int *tab, int start, int end)
 {
 	int	pivot;
-	int	i;
-	int	j;
+	int	l;
+	int	r;
 
-	if (!tab || imin < 0 || imax < 0 || imax <= imin
-		|| is_int_tab_sorted(tab + imin, imax - imin + 1))
+	if (end <= start)
 		return ;
-	pivot = tab[imax];
-	i = imin;
-	j = imax - 1;
-	while (i <= j)
+	pivot = tab[end];
+	l = start;
+	r = end - 1;
+	while (l < r)
 	{
-		while (i < imax && tab[i] <= pivot)
-			i++;
-		while (imin <= j && pivot <= tab[j])
-			j--;
-		if (i < j)
-			ft_swap(&tab[i], &tab[j]);
+		while (tab[l] < pivot)
+			l++;
+		while (start < r && pivot <= tab[r])
+			r--;
+		if (l < r)
+			ft_swap(&tab[l], &tab[r]);
 	}
-	ft_swap(&tab[i], &tab[imax]);
-	quicksort(tab, imin, i - 1);
-	quicksort(tab, i + 1, imax);
+	if (pivot < tab[l])
+		ft_swap(&tab[l], &tab[end]);
+	partition(tab, start, l - 1);
+	partition(tab, l + 1, end);
+}
+
+void		quicksort(int *tab, unsigned int size)
+{
+	if (!tab || size <= 1)
+		return ;
+	partition(tab, 0, size - 1);
+	return ;
 }

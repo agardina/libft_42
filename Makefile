@@ -8,7 +8,7 @@ ERASE_LINE = "\\033[A\\033[K\\033[A"
 ## COMPILATION
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 NAME = libft.a
 
 ## HEADERS
@@ -31,6 +31,7 @@ SRC_DIR = ./src/
 # Char
 SRC_FILES += char/ft_isalnum.c
 SRC_FILES += char/ft_isalpha.c
+SRC_FILES += char/ft_isdigit.c
 SRC_FILES += char/ft_isprint.c
 SRC_FILES += char/ft_tolower.c
 SRC_FILES += char/ft_toupper.c

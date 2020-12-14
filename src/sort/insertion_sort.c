@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 01:31:40 by agardina          #+#    #+#             */
-/*   Updated: 2020/11/04 01:31:42 by agardina         ###   ########.fr       */
+/*   Created: 2020/12/14 17:00:21 by agardina          #+#    #+#             */
+/*   Updated: 2020/12/14 17:00:26 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 void	insertion_sort(int *tab, unsigned int size)
 {
+	unsigned int	unsorted;
 	unsigned int	i;
-	unsigned int	index_to_sort;
-	int				insert_index;
 
-	if (!tab || size < 2)
+	if (!tab || size <= 1)
 		return ;
-	index_to_sort = 1;
-	while (!is_int_tab_sorted(tab, size))
+	unsorted = 1;
+	while (unsorted < size)
 	{
-		insert_index = 0;
-		while (tab[insert_index] < tab[index_to_sort])
-			insert_index++;
-		i = index_to_sort;
-		while (insert_index < (int)i)
+		i = unsorted;
+		while (0 < i)
 		{
-			ft_swap(&tab[i - 1], &tab[i]);
+			if (tab[i] < tab[i - 1])
+				ft_swap(&tab[i], &tab[i - 1]);
+			else
+				break ;
 			i--;
 		}
-		index_to_sort++;
+		unsorted++;
 	}
+	return ;
 }
