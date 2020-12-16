@@ -6,13 +6,14 @@
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 17:00:29 by agardina          #+#    #+#             */
-/*   Updated: 2020/12/14 17:00:34 by agardina         ###   ########.fr       */
+/*   Updated: 2020/12/16 11:41:54 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	copy_aux_to_tab(int *tab, int *aux, unsigned int start, unsigned int aux_len)
+static void	copy_aux_to_tab(int *tab, int *aux, unsigned int start,
+				unsigned int aux_len)
 {
 	unsigned int	i;
 

@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_vector_realloc.c                               :+:      :+:    :+:   */
+/*   ft_dbl_lstinit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 16:35:54 by agardina          #+#    #+#             */
-/*   Updated: 2020/11/09 16:35:55 by agardina         ###   ########.fr       */
+/*   Created: 2020/12/16 11:23:59 by agardina          #+#    #+#             */
+/*   Updated: 2020/12/16 11:24:02 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	int_vector_realloc(t_int_vector *vect)
+void	ft_dbl_lstinit(t_dbl_list *list)
 {
-	int	*new;
-
-	if (!vect)
+	if (!list)
 		return ;
-	if (!(new = (int*)ft_memalloc(sizeof(int) * vect->total_size * 2)))
-	{
-		free(vect->tab);
-		vect->tab = NULL;
-		free(vect);
-		vect = NULL;
-		return ;
-	}
-	if (vect->tab)
-	{
-		ft_memcpy(new, vect->tab, sizeof(int) * vect->total_size);
-		free(vect->tab);
-	}
-	vect->tab = new;
-	vect->total_size = vect->total_size * 2;
+	list->head = NULL;
+	list->tail = NULL;
+	list->size = 0;
 }

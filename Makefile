@@ -15,11 +15,13 @@ NAME = libft.a
 
 HDR_DIR = ./inc/
 HDR_FILES = dict.h \
+				doubly_linked_list.h \
 				ft_printf_prototypes.h \
 				ft_printf_structs.h \
 				get_next_line.h \
 				int_vectors.h \
 				libft.h \
+				list.h \
 				queue.h \
 				stack.h \
 HDR = $(addprefix $(HDR_DIR), $(HDR_FILES))
@@ -59,6 +61,15 @@ SRC_FILES += display/ft_putnbr.c
 SRC_FILES += display/ft_putnbr_fd.c
 SRC_FILES += display/ft_putstr.c
 SRC_FILES += display/ft_putstr_fd.c
+
+# Doubly_linked_list
+SRC_FILES += doubly_linked_list/ft_dbl_lstadd.c
+SRC_FILES += doubly_linked_list/ft_dbl_lstadd_tail.c
+SRC_FILES += doubly_linked_list/ft_dbl_lstdel.c
+SRC_FILES += doubly_linked_list/ft_dbl_lstdelone.c
+SRC_FILES += doubly_linked_list/ft_dbl_lstinit.c
+SRC_FILES += doubly_linked_list/ft_dbl_lstnew.c
+SRC_FILES += doubly_linked_list/ft_dbl_lstsize.c
 
 # ft_printf
 SRC_FILES += ft_printf/bin.c
@@ -213,6 +224,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)/conversion
 	@mkdir -p $(OBJ_DIR)/dict
 	@mkdir -p $(OBJ_DIR)/display
+	@mkdir -p $(OBJ_DIR)/doubly_linked_list
 	@mkdir -p $(OBJ_DIR)/ft_printf
 	@mkdir -p $(OBJ_DIR)/ft_printf/floats
 	@mkdir -p $(OBJ_DIR)/get_next_line

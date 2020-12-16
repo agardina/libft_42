@@ -13,6 +13,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include "doubly_linked_list.h"
 # include "get_next_line.h"
 # include "ft_printf_prototypes.h"
 # include "int_vectors.h"
