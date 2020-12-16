@@ -38,7 +38,8 @@ void						ft_dbl_lstadd_tail(t_dbl_list *list,
 void						ft_dbl_lstdel(t_dbl_list *list);
 void						ft_dbl_lstdelone(t_dbl_list *list,
 								t_dbl_list_elt *e);
-void						ft_dbl_lstinit(t_dbl_list *list);
+void						ft_dbl_lstinit(t_dbl_list *list,
+								void (*del)(void *, size_t));
 t_dbl_list_elt				*ft_dbl_lstnew(void const *content,
 								size_t content_size);
 unsigned int				ft_dbl_lstsize(t_dbl_list *list);
