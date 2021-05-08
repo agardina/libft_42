@@ -13,7 +13,7 @@
 #include "dict.h"
 #include "libft.h"
 
-unsigned int		hash(const char *key)
+unsigned int	hash(const char *key)
 {
 	unsigned int	len;
 	unsigned int	i;

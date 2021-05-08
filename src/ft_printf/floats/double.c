@@ -12,7 +12,7 @@
 
 #include "ft_printf_prototypes.h"
 
-int		print_f(va_list ap, t_conv *conv)
+int	print_f(va_list ap, t_conv *conv)
 {
 	t_dbl			dbl;
 	unsigned int	len;
@@ -22,7 +22,10 @@ int		print_f(va_list ap, t_conv *conv)
 	len = 0;
 	dbl.bits.f = (double)va_arg(ap, double);
 	get_d_info(&dbl, conv, &len);
-	prefix_len = (dbl.sign == 1 || conv->plus || conv->space) ? 1 : 0;
+	if (dbl.sign == 1 || conv->plus || conv->space)
+		prefix_len = 1;
+	else
+		prefix_len = 0;
 	if (dbl.expo + 1023 == 0b11111111111)
 		return (deal_inf_nan_dbl(conv, dbl));
 	stock_dbl(&dbl, &big, conv->prec, &len);
@@ -39,7 +42,8 @@ int		print_f(va_list ap, t_conv *conv)
 
 void	get_d_info(t_dbl *dbl, t_conv *conv, unsigned int *len)
 {
-	if ((dbl->sign = dbl->bits.u >> 63))
+	dbl->sign = dbl->bits.u >> 63;
+	if (dbl->sign)
 		dbl->bits.u = dbl->bits.u ^ 0x8000000000000000;
 	dbl->expo = (((dbl->bits.u) << 1) >> 53) - 1023;
 	dbl->mant = (dbl->bits.u) << 12;
@@ -57,8 +61,10 @@ void	stock_dbl(t_dbl *dbl, t_bigint *big, int prec, unsigned int *len)
 		store_small_dbl(*dbl, big);
 	big->is_long = 0;
 	get_bigint_info(big, dbl->expo, prec);
-	if (dbl->expo < 0)
-		*len += prec > 0 ? prec + 1 : 1;
+	if (dbl->expo < 0 && prec > 0)
+		*len += prec + 1;
+	else if (dbl->expo < 0 && prec <= 0)
+		*len += 1;
 	else
 	{
 		if (big->first_int_case < BIGINT_SIZE - 7)
@@ -70,11 +76,12 @@ void	stock_dbl(t_dbl *dbl, t_bigint *big, int prec, unsigned int *len)
 		{
 			*len += get_uint_len(div_by_10((big->tab)[big->last_int_case], 6));
 		}
-		*len += prec > 0 ? prec : 0;
+		if (prec > 0)
+			*len += prec;
 	}
 }
 
-int		put_dbl_buffer(int16_t expo, t_conv *conv, t_bigint *big)
+int	put_dbl_buffer(int16_t expo, t_conv *conv, t_bigint *big)
 {
 	if (expo >= 0)
 		return (print_big_dbl(expo, conv, big));

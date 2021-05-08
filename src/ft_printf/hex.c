@@ -12,15 +12,25 @@
 
 #include "ft_printf_prototypes.h"
 
-int		print_x(va_list ap, t_conv *conv)
+static unsigned int	compute_len(unsigned long long int nb, t_conv *conv)
+{
+	if (!nb && !conv->prec)
+		return (0);
+	return ((unsigned int)get_convert_len(nb, conv));
+}
+
+int	print_x(va_list ap, t_conv *conv)
 {
 	unsigned long long int	nb;
 	unsigned int			len;
 	int						prefix_len;
 
 	nb = convert_u_number(ap, conv);
-	len = (!nb && !conv->prec) ? 0 : get_convert_len(nb, conv);
-	prefix_len = nb > 0 && conv->hashtag ? 2 : 0;
+	len = compute_len(nb, conv);
+	if (nb > 0 && conv->hashtag)
+		prefix_len = 2;
+	else
+		prefix_len = 0;
 	if (!conv->minus && conv->width > 0 && !conv->zero)
 		put_spaces(conv->width - ft_max(len, conv->prec) - prefix_len, conv);
 	print_u_prefix(nb, conv);
@@ -38,15 +48,18 @@ int		print_x(va_list ap, t_conv *conv)
 	return (ft_max(ft_max(len + prefix_len, conv->prec), conv->width));
 }
 
-int		print_big_x(va_list ap, t_conv *conv)
+int	print_big_x(va_list ap, t_conv *conv)
 {
 	unsigned long long int	nb;
 	unsigned int			len;
 	int						prefix_len;
 
 	nb = convert_u_number(ap, conv);
-	len = (!nb && !conv->prec) ? 0 : get_convert_len(nb, conv);
-	prefix_len = nb > 0 && conv->hashtag ? 2 : 0;
+	len = compute_len(nb, conv);
+	if (nb > 0 && conv->hashtag)
+		prefix_len = 2;
+	else
+		prefix_len = 0;
 	if (!conv->minus && conv->width > 0 && !conv->zero)
 		put_spaces(conv->width - ft_max(len, conv->prec) - prefix_len, conv);
 	print_u_prefix(nb, conv);

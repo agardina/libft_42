@@ -18,7 +18,10 @@ int	print_p(va_list ap, t_conv *conv)
 	unsigned int			len;
 
 	nb = convert_u_number(ap, conv);
-	len = (!nb && !conv->prec) ? 0 : get_convert_len(nb, conv);
+	if (!nb && !conv->prec)
+		len = 0;
+	else
+		len = get_convert_len(nb, conv);
 	if (!conv->minus && conv->width > 0 && !conv->zero)
 		put_spaces(conv->width - ft_max(len, conv->prec) - 2, conv);
 	print_u_prefix(nb, conv);

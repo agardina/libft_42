@@ -12,19 +12,32 @@
 
 #include "ft_printf_prototypes.h"
 
+static	int	compute_len(t_conv *conv, char *str)
+{
+	if (!conv->prec)
+		return (0);
+	else if (conv->prec != 0 && !str)
+	{
+		if (conv->prec == -1)
+			return (6);
+		else
+			return (ft_min(6, conv->prec));
+	}
+	else
+	{
+		if (conv->prec == -1)
+			return (ft_strlen(str));
+		return (ft_min(ft_strlen(str), conv->prec));
+	}
+}
+
 int	print_s(va_list ap, t_conv *conv)
 {
 	int		len;
 	char	*str;
 
 	str = (char *)va_arg(ap, char *);
-	if (!conv->prec)
-		len = 0;
-	else if (conv->prec != 0 && !str)
-		len = conv->prec == -1 ? 6 : ft_min(6, conv->prec);
-	else
-		len = conv->prec == -1 ? ft_strlen(str) :
-			ft_min(ft_strlen(str), conv->prec);
+	len = compute_len(conv, str);
 	if (!conv->minus)
 	{
 		if (!conv->zero)
@@ -38,5 +51,7 @@ int	print_s(va_list ap, t_conv *conv)
 		puts_no_format(conv, str, len);
 	if (conv->minus)
 		put_spaces(conv->width - len, conv);
-	return (conv->width - len > 0 ? conv->width : len);
+	if (conv->width - len > 0)
+		return (conv->width);
+	return (len);
 }

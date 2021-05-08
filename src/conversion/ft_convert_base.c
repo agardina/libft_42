@@ -14,7 +14,7 @@
 
 static int	is_base(char *base, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (base[i])
@@ -31,8 +31,8 @@ static int	is_base(char *base, char c)
 
 static int	err(char *str, char *base)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	if (!str || !str[0] || !base || (int)ft_strlen(base) < 2
 		|| (int)ft_strlen(base) > 16)
@@ -60,8 +60,8 @@ static int	err(char *str, char *base)
 
 static int	err_base(char *base)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	if (!base || (int)ft_strlen(base) < 2)
 		return (1);
@@ -82,7 +82,7 @@ static int	err_base(char *base)
 	return (0);
 }
 
-char		*ft_convert_base(char *nbr, char *base_from, char *base_to)
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	if (!err(nbr, base_from) && !err_base(base_to))
 		return (ft_itoa_base_str(ft_atoi_base(nbr, base_from), base_to));

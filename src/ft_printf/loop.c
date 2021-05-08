@@ -12,7 +12,7 @@
 
 #include "ft_printf_prototypes.h"
 
-int		ft_printf(const char *restrict format, ...)
+int	ft_printf(const char *restrict format, ...)
 {
 	va_list	ap;
 	t_conv	conv;
@@ -56,9 +56,9 @@ void	print_no_format(t_conv *conv, char **str)
 	}
 }
 
-int		print_format_string(va_list ap, t_conv *conv, char **str)
+int	print_format_string(va_list ap, t_conv *conv, char **str)
 {
-	static int	(*f[11]) (va_list ap, t_conv *c) = {&print_c,
+	static	int	(*f[11])(va_list ap, t_conv *c) = {&print_c,
 		&print_d, &print_f, &print_lf, &print_o, &print_p, &print_s,
 		&print_u, &print_x, &print_big_x, &print_b};
 

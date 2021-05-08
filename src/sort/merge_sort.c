@@ -65,13 +65,14 @@ static void	divide(int *tab, unsigned int start, unsigned int end, int *aux)
 	merge(tab, start, end, aux);
 }
 
-void		merge_sort(int *tab, unsigned int size)
+void	merge_sort(int *tab, unsigned int size)
 {
 	int	*aux;
 
 	if (!tab || size <= 1)
 		return ;
-	if (!(aux = (int*)malloc(sizeof(int) * size)))
+	aux = (int *)malloc(sizeof(int) * size);
+	if (!aux)
 		return ;
 	divide(tab, 0, size - 1, aux);
 	free(aux);

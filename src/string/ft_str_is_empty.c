@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_int_tab.c                                    :+:      :+:    :+:   */
+/*   ft_str_is_empty.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/03 17:08:34 by agardina          #+#    #+#             */
-/*   Updated: 2020/11/03 17:10:48 by agardina         ###   ########.fr       */
+/*   Created: 2021/06/27 16:47:12 by agardina          #+#    #+#             */
+/*   Updated: 2021/06/27 16:47:13 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_prototypes.h"
+#include "libft.h"
 
-void	print_int_tab(int *tab, unsigned int size)
+int	ft_str_is_empty(const char *str)
 {
-	unsigned int	i;
-
-	if (!tab)
-		return ;
-	i = 0;
-	while (i < size)
-		ft_printf("%d ", tab[i++]);
-	ft_printf("\n");
+	if (!str || !str[0])
+		return (1);
+	return (0);
 }

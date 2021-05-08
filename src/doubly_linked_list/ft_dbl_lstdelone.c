@@ -42,7 +42,7 @@ static void	ft_dbl_lstdeltail(t_dbl_list *list)
 	list->size--;
 }
 
-void		ft_dbl_lstdelone(t_dbl_list *list, t_dbl_list_elt *e)
+void	ft_dbl_lstdelone(t_dbl_list *list, t_dbl_list_elt *e)
 {
 	t_dbl_list_elt	*prev;
 	t_dbl_list_elt	*next;

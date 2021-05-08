@@ -13,13 +13,14 @@
 #include "libft.h"
 #include <stdlib.h>
 
-char		**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
-	char *separator;
+	char	*separator;
 
 	if (!s || !c)
 		return (NULL);
-	if ((separator = (char*)malloc(sizeof(char) * 2)) == NULL)
+	separator = (char *)malloc(sizeof(char) * 2);
+	if (separator == NULL)
 		return (NULL);
 	separator[0] = c;
 	separator[1] = '\0';

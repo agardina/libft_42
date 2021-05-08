@@ -42,5 +42,8 @@ void	get_type(char **str, t_conv *conv)
 void	get_c_type(char **str, t_conv *conv)
 {
 	conv->type = TYPE_C;
-	conv->other_char = **str != 'c' ? **str : 0;
+	if (**str != 'c')
+		conv->other_char = **str;
+	else
+		conv->other_char = 0;
 }

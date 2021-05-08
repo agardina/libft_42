@@ -3,67 +3,103 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/19 11:03:42 by agardina          #+#    #+#             */
-/*   Updated: 2020/10/30 15:44:09 by agardina         ###   ########.fr       */
+/*   Created: 2021/06/27 16:46:28 by agardina          #+#    #+#             */
+/*   Updated: 2021/06/27 16:46:30 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	free_and_return(char *str, int ret)
+static int	free_all_and_return(int code, char **line, char **remainder)
 {
-	ft_strdel(&str);
-	return (ret);
+	free(*line);
+	*line = NULL;
+	free(*remainder);
+	*remainder = NULL;
+	return (code);
 }
 
-static int	read_and_stock(const int fd, char **stock)
+static int	deal_with_remainder(char **line, char **remainder)
 {
-	char	*buffer;
-	char	*tmp;
-	int		ret;
+	char	*nl;
 
-	if (!(buffer = (char*)malloc(sizeof(char) * (GNL_BUFF_SIZE + 1))))
-		return (-1);
-	while ((ret = read(fd, buffer, GNL_BUFF_SIZE)) > 0)
+	if (ft_str_is_empty(*remainder))
+		return (REMAINDER_EMPTY);
+	nl = ft_strchr(*remainder, '\n');
+	*line = ft_copy_str_until_char_excl(*remainder, '\n', 1);
+	if (!*line)
+		return (REMAINDER_ERR);
+	if (ft_trim_str_after_char_excl(remainder, '\n', 1))
+		return (REMAINDER_ERR);
+	if (nl)
+		return (REMAINDER_OK_WITH_NEWLINE);
+	return (REMAINDER_OK_NO_NEWLINE);
+}
+
+static int	read_fd(char *buffer, char **line, int fd)
+{
+	int	ret;
+
+	ret = read(fd, buffer, BUFF_SIZE);
+	if (ret < 0)
+		return (GNL_ERR);
+	buffer[ret] = '\0';
+	if (ret > 0 && !ft_strlen(buffer))
+		return (GNL_ERR);
+	else if (ret == 0)
+		return (GNL_DONE);
+	if (!ft_str_is_empty(*line))
+		ft_strcat_realloc(line, buffer);
+	else
+		*line = ft_strdup(buffer);
+	if (!*line)
+		return (GNL_ERR);
+	return (GNL_CONTINUE);
+}
+
+static int	check_newline(char *buffer, char **remainder, char **line)
+{
+	if (ft_str_is_empty(buffer))
+		return (GNL_DONE);
+	if (ft_strchr(buffer, '\n'))
 	{
-		buffer[ret] = '\0';
-		if ((int)ft_strlen(buffer) != ret)
-			return (free_and_return(buffer, -1));
-		if (!*stock && !(*stock = ft_strdup("")))
-			return (free_and_return(buffer, -1));
-		tmp = *stock;
-		if (!(*stock = ft_strjoin(*stock, buffer)))
-		{
-			ft_strdel(&tmp);
-			return (free_and_return(buffer, -1));
-		}
-		ft_strdel(&tmp);
-		if (ft_strchr(*stock, '\n'))
-			break ;
+		*remainder = ft_strdup(ft_strchr(buffer, '\n') + 1);
+		if (!*remainder)
+			return (GNL_ERR);
+		ft_trim_str_until_char_excl(line, '\n', 0);
+		if (!*line)
+			return (GNL_ERR);
+		return (GNL_OK);
 	}
-	return (free_and_return(buffer, ret));
+	return (GNL_CONTINUE);
 }
 
-int			get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
-	static char	*stock[OPEN_MAX];
-	char		*tmp;
-	char		*end;
+	char		buffer[BUFF_SIZE + 1];
+	static char	*remainder;
 	int			ret;
 
-	if (fd < 0 || fd > OPEN_MAX || !line || GNL_BUFF_SIZE < 1)
-		return (-1);
-	ret = read_and_stock(fd, &stock[fd]);
-	if (ret == -1 || (ret == 0 && (!stock[fd] || !stock[fd][0])))
-		return (ret);
-	if (!(*line = ft_strcdup(stock[fd], '\n', 0, 1)))
-		return (-1);
-	end = ft_strchr(stock[fd], '\n');
-	tmp = stock[fd];
-	if (!(stock[fd] = end ? ft_strdup(end + 1) : ft_strdup("")))
-		return (free_and_return(tmp, -1));
-	ft_strdel(&tmp);
-	return (1);
+	if (!line || BUFF_SIZE < 1 || fd < 0 || fd > OPEN_MAX)
+		return (GNL_ERR);
+	*line = NULL;
+	ret = deal_with_remainder(line, &remainder);
+	if (ret == REMAINDER_ERR)
+		return (free_all_and_return(GNL_ERR, line, &remainder));
+	else if (ret == REMAINDER_OK_WITH_NEWLINE)
+		return (GNL_OK);
+	while (1)
+	{
+		ret = read_fd(buffer, line, fd);
+		if (ret == GNL_ERR || (ret == GNL_DONE && ft_str_is_empty(*line)))
+			return (free_all_and_return(ret, line, &remainder));
+		ret = check_newline(buffer, &remainder, line);
+		if (ret == GNL_ERR)
+			return (free_all_and_return(ret, line, &remainder));
+		if (ret == GNL_OK || ret == GNL_DONE)
+			break ;
+	}
+	return (GNL_OK);
 }

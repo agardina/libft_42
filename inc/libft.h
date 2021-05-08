@@ -21,13 +21,13 @@
 # include "queue.h"
 # include "stack.h"
 
-typedef struct		s_word
+typedef struct s_word
 {
 	int				start;
 	int				len;
 }					t_word;
 
-typedef enum		e_bool
+typedef enum e_bool
 {
 	false,
 	true
@@ -40,6 +40,8 @@ int					ft_atoi(const char *str);
 long				ft_atol(char *str, char **end);
 void				ft_bzero(void *s, size_t n);
 char				*ft_convert_base(char *nbr, char *base_from, char *base_to);
+char				*ft_copy_str_until_char_excl(const char *src,
+						const char c, const int copy_if_no_char);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
@@ -67,9 +69,11 @@ void				ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
 char				**ft_split(char const *s, char *charset);
 unsigned int		ft_sqrt(unsigned int n);
+int					ft_str_is_empty(const char *str);
 char				*ft_strcat(char *s1, const char *s2);
+char				*ft_strcat_realloc(char **dst, const char *src);
 char				*ft_strcdup(const char *str, char c, int incl_c,
-	int copy_all);
+						int copy_all);
 char				*ft_strchr(const char *s, int c);
 void				ft_strclr(char *s);
 int					ft_strcmp(const char *s1, const char *s2);
@@ -90,12 +94,16 @@ char				*ft_strncpy(char *dst, const char *src, size_t len);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strnew(size_t size);
 char				*ft_strnstr(const char *big, const char *little,
-		size_t len);
+						size_t len);
 char				*ft_strrchr(const char *s, int c);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_strstr(const char *big, const char *little);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
+int					ft_trim_str_after_char_excl(char **str, const char c,
+						const int delete_if_no_char);
+int					ft_trim_str_until_char_excl(char **str, const char c,
+						const int delete_if_no_char);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 void				ft_swap(int *a, int *b);
@@ -105,7 +113,6 @@ char				is_int_tab_sorted(int *tab, unsigned int size);
 void				merge_sort(int *tab, unsigned int size);
 void				print_int_tab(int *tab, unsigned int size);
 void				quicksort(int *tab, unsigned int size);
-void				radix_sort(int *tab, unsigned int size);
 void				selection_sort(int *tab, unsigned int size);
 
 #endif

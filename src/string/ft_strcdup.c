@@ -6,7 +6,7 @@
 /*   By: agardina <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 10:46:53 by agardina          #+#    #+#             */
-/*   Updated: 2019/09/19 11:08:47 by agardina         ###   ########.fr       */
+/*   Updated: 2021/06/27 16:52:19 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char	*ft_strcdup(const char *str, char c, int incl_c, int copy_all)
 {
 	int		len;
 	char	*new;
-	int		i;
 	char	*end;
 
 	end = ft_strchr(str, c);
@@ -34,15 +33,16 @@ char	*ft_strcdup(const char *str, char c, int incl_c, int copy_all)
 	if ((!end && copy_all) || !c)
 		len = ft_strlen(str);
 	else
-		len = end - str - (incl_c == 1 ? 0 : 1) + 1;
-	if (!(new = (char*)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	i = 0;
-	while (i < len)
 	{
-		new[i] = str[i];
-		i++;
+		if (incl_c == 1)
+			len = end - str + 1;
+		else
+			len = end - str;
 	}
+	new = (char *)malloc(sizeof(char) * (len + 1));
+	if (!new)
+		return (NULL);
+	ft_strncpy(new, str, len);
 	new[len] = '\0';
 	return (new);
 }

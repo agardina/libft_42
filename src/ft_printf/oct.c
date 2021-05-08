@@ -12,16 +12,29 @@
 
 #include "ft_printf_prototypes.h"
 
-int		print_o(va_list ap, t_conv *conv)
+static	unsigned int	compute_len(unsigned long long int nb, t_conv *conv)
+{
+	if (!nb && (conv->prec == 0 || conv->hashtag))
+		return (0);
+	return (get_convert_len(nb, conv));
+}
+
+static	int	compute_prefix_len(t_conv *conv)
+{
+	if (conv->hashtag)
+		return (1);
+	return (0);
+}
+
+int	print_o(va_list ap, t_conv *conv)
 {
 	unsigned long long int	nb;
 	unsigned int			len;
 	int						prefix_len;
 
 	nb = convert_u_number(ap, conv);
-	len = (!nb && (conv->prec == 0 || conv->hashtag)) ?
-		0 : get_convert_len(nb, conv);
-	prefix_len = conv->hashtag ? 1 : 0;
+	len = compute_len(nb, conv);
+	prefix_len = compute_prefix_len(conv);
 	if (!conv->minus && conv->width > 0 && !conv->zero)
 		put_spaces(conv->width - ft_max(len + prefix_len, conv->prec), conv);
 	print_u_prefix(nb, conv);

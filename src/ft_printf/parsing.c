@@ -45,7 +45,8 @@ void	get_prec(va_list ap, char **str, t_conv *conv)
 	conv->prec = 0;
 	if (**str == '*')
 	{
-		if ((conv->prec = va_arg(ap, int)) < 0)
+		conv->prec = va_arg(ap, int);
+		if (conv->prec < 0)
 			conv->prec = -1;
 	}
 	else
@@ -67,7 +68,8 @@ void	get_width(va_list ap, char **str, t_conv *conv)
 	conv->width = 0;
 	if (**str == '*')
 	{
-		if ((conv->width = va_arg(ap, int)) < 0)
+		conv->width = va_arg(ap, int);
+		if (conv->width < 0)
 		{
 			conv->minus = 1;
 			conv->width *= -1;
@@ -121,8 +123,8 @@ void	set_prio_flags(t_conv *conv)
 		if (conv->space && conv->plus)
 			conv->space = 0;
 		if (conv->prec > -1 && (conv->type == TYPE_D || conv->type == TYPE_O
-					|| conv->type == TYPE_U || conv->type == TYPE_X
-					|| conv->type == TYPE_BIG_X))
+				|| conv->type == TYPE_U || conv->type == TYPE_X
+				|| conv->type == TYPE_BIG_X))
 			conv->zero = 0;
 	}
 }

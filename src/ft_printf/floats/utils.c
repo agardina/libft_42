@@ -24,6 +24,26 @@ void	init_bigint(t_bigint *big)
 	}
 }
 
+static	void	_create_unit_fill_tab(t_bigint *big, unsigned int size)
+{
+	if (size == 8)
+	{
+		(big->tab)[BIGINT_SIZE - 1] = 500000000;
+		(big->tab)[BIGINT_SIZE - 2] = 618164062;
+		(big->tab)[BIGINT_SIZE - 3] = 84726333;
+		(big->tab)[BIGINT_SIZE - 4] = 925031308;
+		(big->tab)[BIGINT_SIZE - 5] = 222044604;
+	}
+	else
+	{
+		(big->tab)[BIGINT_SIZE - 1] = 142578125;
+		(big->tab)[BIGINT_SIZE - 2] = 86994171;
+		(big->tab)[BIGINT_SIZE - 3] = 400745280;
+		(big->tab)[BIGINT_SIZE - 4] = 248550443;
+		(big->tab)[BIGINT_SIZE - 5] = 108420217;
+	}
+}
+
 void	create_unit(t_bigint *big, unsigned int size, int expo)
 {
 	int	i;
@@ -36,11 +56,7 @@ void	create_unit(t_bigint *big, unsigned int size, int expo)
 			(big->tab)[i] = 0;
 			i++;
 		}
-		(big->tab)[BIGINT_SIZE - 1] = size == 8 ? 500000000 : 142578125;
-		(big->tab)[BIGINT_SIZE - 2] = size == 8 ? 618164062 : 86994171;
-		(big->tab)[BIGINT_SIZE - 3] = size == 8 ? 84726333 : 400745280;
-		(big->tab)[BIGINT_SIZE - 4] = size == 8 ? 925031308 : 248550443;
-		(big->tab)[BIGINT_SIZE - 5] = size == 8 ? 222044604 : 108420217;
+		_create_unit_fill_tab(big, size);
 	}
 	else
 	{
@@ -72,7 +88,7 @@ void	filling_zeros(t_conv *conv, unsigned int nb)
 		putc_no_format(conv, '0');
 }
 
-int		only_nine(unsigned int nb)
+int	only_nine(unsigned int nb)
 {
 	if (!nb)
 		return (0);

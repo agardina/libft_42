@@ -55,7 +55,7 @@ long long int		convert_s_number(va_list ap, t_conv *conv);
 unsigned long long	convert_u_number(va_list ap, t_conv *conv);
 int					ft_printf(const char *restrict format, ...);
 void				ft_putnbr_base_buf(t_conv *conv, unsigned long long nb,
-		char *base);
+						char *base);
 void				ft_putnbr_buf(t_conv *conv, unsigned long long nb);
 void				get_c_type(char **str, t_conv *conv);
 int					get_color(char **str, t_conv *conv);
@@ -105,24 +105,24 @@ void				mult_bigint_by_2(t_bigint *big);
 int					only_nine(unsigned int nb);
 int					print_big_dbl(int16_t expo, t_conv *conv, t_bigint *big);
 void				print_dec_part(t_bigint *big, int prec, int16_t expo,
-		t_conv *conv);
+						t_conv *conv);
 void				print_first_dec(unsigned int nb, int *prec, int *i,
-		t_conv *conv);
+						t_conv *conv);
 void				print_first_int_digits(t_bigint *big, int *res,
-		t_conv *conv, int *int_part_start);
+						t_conv *conv, int *int_part_start);
 void				print_f_prefix(t_conv *conv, int sign);
 int					print_inf_nan(t_conv *conv, char *str);
 int					print_int_part(t_bigint *big, int16_t expo, int prec,
-		t_conv *conv);
+						t_conv *conv);
 int					print_small_dbl(int16_t expo, t_conv *conv, t_bigint *big);
 int					put_dbl_buffer(int16_t expo, t_conv *conv, t_bigint *big);
 int					put_ldbl_buffer(int16_t expo, t_bigint *big, t_conv *conv);
 void				round_up_bigint(t_bigint *big,
-		unsigned int last_dec_to_print);
+						unsigned int last_dec_to_print);
 void				stock_dbl(t_dbl *dbl, t_bigint *big, int prec,
-		unsigned int *len);
+						unsigned int *len);
 void				stock_ldbl(t_ldbl *ldbl, t_bigint *big, int prec,
-		unsigned int *len);
+						unsigned int *len);
 void				store_big_dbl(t_dbl dbl, t_bigint *big);
 void				store_big_ldbl(t_ldbl ldbl, t_bigint *big);
 void				store_small_dbl(t_dbl dbl, t_bigint *big);

@@ -6,7 +6,7 @@
 /*   By: agardina <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:14:46 by agardina          #+#    #+#             */
-/*   Updated: 2019/04/25 19:37:34 by agardina         ###   ########.fr       */
+/*   Updated: 2021/06/27 16:50:52 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static int	is_sep(char *charset, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (charset[i])
@@ -30,15 +30,15 @@ static int	is_sep(char *charset, char c)
 
 static int	get_words_nb(char const *s, char *charset)
 {
-	int i;
-	int count;
+	int	i;
+	int	count;
 
 	i = 0;
 	count = 0;
 	while (s[i])
 	{
 		if (!is_sep(charset, s[i]) && ((i > 0 && is_sep(charset, s[i - 1]))
-									|| i == 0))
+				|| i == 0))
 			count++;
 		i++;
 	}
@@ -47,15 +47,15 @@ static int	get_words_nb(char const *s, char *charset)
 
 static void	get_words_info(char const *s, char *charset, t_word *tab)
 {
-	int i;
-	int index;
+	int	i;
+	int	index;
 
 	i = 0;
 	index = -1;
 	while (s[i])
 	{
 		if (!is_sep(charset, s[i]) && ((i > 0 && is_sep(charset, s[i - 1]))
-									|| i == 0))
+				|| i == 0))
 		{
 			index++;
 			(tab + index)->len = 1;
@@ -69,7 +69,7 @@ static void	get_words_info(char const *s, char *charset, t_word *tab)
 
 static void	fill_tab(char const *str, char *substr, t_word word_info)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < word_info.len)
@@ -80,7 +80,7 @@ static void	fill_tab(char const *str, char *substr, t_word word_info)
 	substr[i] = '\0';
 }
 
-char		**ft_split(char const *s, char *charset)
+char	**ft_split(char const *s, char *charset)
 {
 	char	**tab;
 	int		words_nb;
@@ -90,16 +90,16 @@ char		**ft_split(char const *s, char *charset)
 	if (!s || !charset || !charset[0])
 		return (NULL);
 	words_nb = get_words_nb(s, charset);
-	tab = (char**)malloc(sizeof(char*) * (size_t)(words_nb + 1));
-	info = (t_word*)malloc(sizeof(t_word) * (size_t)words_nb);
+	tab = (char **)malloc(sizeof(char *) * (size_t)(words_nb + 1));
+	info = (t_word *)malloc(sizeof(t_word) * (size_t)words_nb);
 	if (tab == NULL || info == NULL)
 		return (NULL);
 	get_words_info(s, charset, info);
 	i = 0;
 	while (i < words_nb)
 	{
-		if ((tab[i] = (char*)malloc(sizeof(char)
-									* (size_t)(info[i].len + 1))) == NULL)
+		tab[i] = (char *)malloc(sizeof(char) * (size_t)(info[i].len + 1));
+		if (tab[i] == NULL)
 			return (NULL);
 		fill_tab(s, tab[i], info[i]);
 		i++;

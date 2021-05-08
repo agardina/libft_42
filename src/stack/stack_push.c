@@ -16,7 +16,8 @@ int	stack_push(t_stack **stack, const void *content)
 {
 	t_stack	*new;
 
-	if (!(new = ft_lstnew(content, sizeof(*content))))
+	new = ft_lstnew(content, sizeof(*content));
+	if (!new)
 		return (-1);
 	ft_lstadd(stack, ft_lstnew(content, sizeof(*content)));
 	return (0);

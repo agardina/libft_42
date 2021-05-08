@@ -38,7 +38,7 @@ static void	partition(int *tab, int start, int end)
 	partition(tab, l + 1, end);
 }
 
-void		quicksort(int *tab, unsigned int size)
+void	quicksort(int *tab, unsigned int size)
 {
 	if (!tab || size <= 1)
 		return ;

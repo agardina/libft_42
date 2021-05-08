@@ -14,7 +14,7 @@
 
 static int	is_base(char *base, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (base[i])
@@ -31,8 +31,8 @@ static int	is_base(char *base, char c)
 
 static int	err(char *str, char *base)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	if (!str || !str[0] || !base || (int)ft_strlen(base) < 2
 		|| (int)ft_strlen(base) > 16)
@@ -60,7 +60,7 @@ static int	err(char *str, char *base)
 
 static int	get_index(char *base, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (c != base[i])
@@ -68,11 +68,11 @@ static int	get_index(char *base, char c)
 	return (i);
 }
 
-int			ft_atoi_base(char *str, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
-	int i;
-	int sign;
-	int result;
+	int	i;
+	int	sign;
+	int	result;
 
 	if (err(str, base))
 		return (0);

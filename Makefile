@@ -74,7 +74,7 @@ SRC_FILES += doubly_linked_list/ft_dbl_lstsize.c
 # ft_printf
 SRC_FILES += ft_printf/bin.c
 SRC_FILES += ft_printf/buffer.c
-SRC_FILES += ft_printf/buffer2.c
+SRC_FILES += ft_printf/buffer_2.c
 SRC_FILES += ft_printf/char.c
 SRC_FILES += ft_printf/colors.c
 SRC_FILES += ft_printf/hex.c
@@ -91,6 +91,7 @@ SRC_FILES += ft_printf/unsigned.c
 SRC_FILES += ft_printf/floats/deal_inf_nan.c
 SRC_FILES += ft_printf/floats/double.c
 SRC_FILES += ft_printf/floats/get_bigint_info.c
+SRC_FILES += ft_printf/floats/get_bigint_info_2.c
 SRC_FILES += ft_printf/floats/long_double.c
 SRC_FILES += ft_printf/floats/op.c
 SRC_FILES += ft_printf/floats/print_big_dbl.c
@@ -160,7 +161,6 @@ SRC_FILES += sort/bubble_sort.c
 SRC_FILES += sort/insertion_sort.c
 SRC_FILES += sort/merge_sort.c
 SRC_FILES += sort/quicksort.c
-SRC_FILES += sort/radix_sort.c
 SRC_FILES += sort/selection_sort.c
 
 # Stack
@@ -171,7 +171,10 @@ SRC_FILES += stack/stack_push.c
 SRC_FILES += stack/stack_size.c
 
 # String
+SRC_FILES += string/ft_copy_str_until_char.c
 SRC_FILES += string/ft_split.c
+SRC_FILES += string/ft_str_is_empty.c
+SRC_FILES += string/ft_strcat_realloc.c
 SRC_FILES += string/ft_strcat.c
 SRC_FILES += string/ft_strcdup.c
 SRC_FILES += string/ft_strchr.c
@@ -199,6 +202,7 @@ SRC_FILES += string/ft_strsplit.c
 SRC_FILES += string/ft_strstr.c
 SRC_FILES += string/ft_strsub.c
 SRC_FILES += string/ft_strtrim.c
+SRC_FILES += string/ft_trim_str.c
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 

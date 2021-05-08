@@ -24,7 +24,7 @@ int	deal_inf_nan_dbl(t_conv *conv, t_dbl dbl)
 
 int	deal_inf_nan_ldbl(t_conv *conv, t_ldbl ldbl)
 {
-	uint16_t mant;
+	uint16_t	mant;
 
 	mant = ldbl.bits.u[3];
 	if (mant == 0x8000 && ldbl.sign)
@@ -37,7 +37,7 @@ int	deal_inf_nan_ldbl(t_conv *conv, t_ldbl ldbl)
 
 int	print_inf_nan(t_conv *conv, char *str)
 {
-	int len;
+	int	len;
 
 	len = (int)ft_strlen(str);
 	if (!conv->minus)
@@ -50,5 +50,7 @@ int	print_inf_nan(t_conv *conv, char *str)
 	puts_no_format(conv, str, len);
 	if (conv->minus)
 		put_spaces(conv->width - len, conv);
-	return (conv->width - len > 0 ? conv->width : len);
+	if (conv->width - len > 0)
+		return (conv->width);
+	return (len);
 }

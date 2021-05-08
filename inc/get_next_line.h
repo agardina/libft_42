@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agardina <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/06 14:23:08 by agardina          #+#    #+#             */
-/*   Updated: 2019/09/19 15:07:36 by agardina         ###   ########.fr       */
+/*   Created: 2021/06/27 16:46:14 by agardina          #+#    #+#             */
+/*   Updated: 2021/06/27 16:46:19 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,15 @@
 # include <stdlib.h>
 # include "libft.h"
 # include <limits.h>
-# define GNL_BUFF_SIZE 4
+# define BUFF_SIZE 128
+# define GNL_ERR -1
+# define GNL_DONE 0
+# define GNL_OK 1
+# define GNL_CONTINUE 2
+# define REMAINDER_EMPTY 0
+# define REMAINDER_OK_NO_NEWLINE 1
+# define REMAINDER_OK_WITH_NEWLINE 2
+# define REMAINDER_ERR 3
 
 int		get_next_line(const int fd, char **line);
 

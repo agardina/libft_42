@@ -20,7 +20,7 @@ void	round_up_bigint(t_bigint *big, unsigned int last_case_to_print)
 	if (big->next_figure > 4)
 	{
 		if (get_uint_len(last_case_to_print) == 9
-				&& only_nine((big->tab)[big->last_dec_case]))
+			&& only_nine((big->tab)[big->last_dec_case]))
 		{
 			(big->tab)[big->last_dec_case] = 0;
 			index = big->last_dec_case - 1;
@@ -43,8 +43,10 @@ void	cut_tab(t_bigint *big)
 	int	i;
 
 	i = big->last_dec_case;
-	(big->tab)[i] = div_by_10((big->tab)[i], big->last_digit_rank > 0 ?
-			9 - big->last_digit_rank : 0);
+	if (big->last_digit_rank > 0)
+		(big->tab)[i] = div_by_10((big->tab)[i], 9 - big->last_digit_rank);
+	else
+		(big->tab)[i] = div_by_10((big->tab)[i], 0);
 	i++;
 	while (i < BIGINT_SIZE)
 	{

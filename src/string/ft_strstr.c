@@ -14,11 +14,11 @@
 
 char	*ft_strstr(const char *big, const char *little)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	if (!little[0])
-		return ((char*)big);
+		return ((char *)big);
 	i = 0;
 	while (big[i] != '\0')
 	{
@@ -28,7 +28,7 @@ char	*ft_strstr(const char *big, const char *little)
 		if (little[j])
 			i++;
 		else
-			return ((char*)&big[i]);
+			return ((char *)&big[i]);
 	}
 	return (NULL);
 }

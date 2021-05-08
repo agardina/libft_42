@@ -17,7 +17,7 @@ void	print_buffer(t_buf *buf)
 	write(1, buf->b, buf->index);
 }
 
-int		putc_no_format(t_conv *conv, char c)
+int	putc_no_format(t_conv *conv, char c)
 {
 	if ((conv->buf).index == FT_PRINTF_BUFF_SIZE - 1)
 	{
@@ -32,7 +32,7 @@ int		putc_no_format(t_conv *conv, char c)
 
 void	puts_no_format(t_conv *conv, char *str, int len)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < len)
@@ -44,7 +44,7 @@ void	puts_no_format(t_conv *conv, char *str, int len)
 
 void	put_spaces(int nb, t_conv *conv)
 {
-	int count;
+	int	count;
 
 	count = nb;
 	if (count > 0)
@@ -56,7 +56,7 @@ void	put_spaces(int nb, t_conv *conv)
 
 void	put_zeros(int nb, t_conv *conv)
 {
-	int count;
+	int	count;
 
 	count = nb;
 	if (count > 0)

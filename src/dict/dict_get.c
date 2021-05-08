@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "dict.h"
 
-char				*dict_get(t_dict *dict, char *key)
+char	*dict_get(t_dict *dict, char *key)
 {
 	unsigned int	index;
 	t_dict_entry	*ptr;

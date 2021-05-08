@@ -13,7 +13,7 @@
 #include "ft_printf_prototypes.h"
 #include "dict.h"
 
-void				dict_dump(t_dict *dict)
+void	dict_dump(t_dict *dict)
 {
 	unsigned int	i;
 	t_dict_entry	*ptr;

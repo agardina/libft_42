@@ -15,7 +15,7 @@
 # define DOUBLY_LINKED_LIST_H
 # include "libft.h"
 
-typedef struct				s_dbl_list_elt
+typedef struct s_dbl_list_elt
 {
 	void					*content;
 	size_t					content_size;
@@ -23,7 +23,7 @@ typedef struct				s_dbl_list_elt
 	struct s_dbl_list_elt	*next;
 }							t_dbl_list_elt;
 
-typedef struct				s_dbl_list
+typedef struct s_dbl_list
 {
 	t_dbl_list_elt			*head;
 	t_dbl_list_elt			*tail;

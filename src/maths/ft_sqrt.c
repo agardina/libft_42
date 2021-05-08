@@ -12,7 +12,7 @@
 
 unsigned int	ft_sqrt(unsigned int n)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	if (n == 0)
 		return (0);

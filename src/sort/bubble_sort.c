@@ -14,8 +14,8 @@
 
 void	bubble_sort(int *tab, unsigned int size)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
 
 	if (!tab || size <= 1)
 		return ;

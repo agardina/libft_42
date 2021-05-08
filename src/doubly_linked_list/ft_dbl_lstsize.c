@@ -14,5 +14,7 @@
 
 unsigned int	ft_dbl_lstsize(t_dbl_list *list)
 {
-	return (list ? list->size : 0);
+	if (list)
+		return (list->size);
+	return (0);
 }

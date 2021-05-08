@@ -16,7 +16,8 @@ t_dbl_list_elt	*ft_dbl_lstnew(void const *content, size_t content_size)
 {
 	t_dbl_list_elt	*new;
 
-	if (!(new = (t_dbl_list_elt*)malloc(sizeof(t_dbl_list_elt))))
+	new = (t_dbl_list_elt *)malloc(sizeof(t_dbl_list_elt));
+	if (!new)
 		return (NULL);
 	if (!content)
 	{
@@ -25,7 +26,8 @@ t_dbl_list_elt	*ft_dbl_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
-		if (!(new->content = malloc(content_size)))
+		new->content = malloc(content_size);
+		if (!new->content)
 		{
 			free(new);
 			return (NULL);

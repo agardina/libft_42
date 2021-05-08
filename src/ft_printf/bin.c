@@ -12,7 +12,7 @@
 
 #include "ft_printf_prototypes.h"
 
-int		print_b(va_list ap, t_conv *conv)
+int	print_b(va_list ap, t_conv *conv)
 {
 	unsigned long long		nb;
 	unsigned int			len;
@@ -20,8 +20,8 @@ int		print_b(va_list ap, t_conv *conv)
 
 	nb = convert_u_number(ap, conv);
 	len = get_convert_len(nb, conv);
-	if (conv->zero)
-		len += len % 8 ? (8 - len % 8) : 0;
+	if (conv->zero && len % 8)
+		len += 8 - len % 8;
 	i = 0;
 	while (i < len)
 	{
@@ -30,5 +30,7 @@ int		print_b(va_list ap, t_conv *conv)
 			putc_no_format(conv, ' ');
 		i++;
 	}
-	return (len + (conv->space ? ((len - 1) / 8) : 0));
+	if (conv->space)
+		return (len + ((len - 1) / 8));
+	return (len);
 }

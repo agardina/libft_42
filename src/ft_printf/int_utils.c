@@ -12,7 +12,7 @@
 
 #include "ft_printf_prototypes.h"
 
-int					get_uint_len(unsigned long long nb)
+int	get_uint_len(unsigned long long nb)
 {
 	int	res;
 
@@ -25,14 +25,14 @@ int					get_uint_len(unsigned long long nb)
 	return (res);
 }
 
-void				ft_putnbr_buf(t_conv *conv, unsigned long long nb)
+void	ft_putnbr_buf(t_conv *conv, unsigned long long nb)
 {
 	if (nb / 10)
 		ft_putnbr_buf(conv, nb / 10);
 	putc_no_format(conv, (nb % 10) + '0');
 }
 
-void				ft_putnbr_base_buf(t_conv *conv, unsigned long long nb,
+void	ft_putnbr_base_buf(t_conv *conv, unsigned long long nb,
 		char *base)
 {
 	unsigned int	len;
@@ -43,7 +43,7 @@ void				ft_putnbr_base_buf(t_conv *conv, unsigned long long nb,
 	putc_no_format(conv, base[nb % len]);
 }
 
-int					get_convert_len(unsigned long long nb, t_conv *conv)
+int	get_convert_len(unsigned long long nb, t_conv *conv)
 {
 	int	res;
 	int	len;

@@ -6,14 +6,14 @@
 /*   By: agardina <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 19:55:28 by agardina          #+#    #+#             */
-/*   Updated: 2019/04/12 16:21:29 by agardina         ###   ########.fr       */
+/*   Updated: 2021/06/27 16:51:07 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcat(char *s1, const char *s2)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;

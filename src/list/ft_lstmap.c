@@ -15,20 +15,22 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list *first;
-	t_list *current;
-	t_list *tmp;
+	t_list	*first;
+	t_list	*current;
+	t_list	*tmp;
 
 	if (!lst || !f)
 		return (NULL);
-	if ((first = (t_list*)malloc(sizeof(t_list))) == NULL)
+	first = (t_list *)malloc(sizeof(t_list));
+	if (first == NULL)
 		return (NULL);
 	first = (*f)(lst);
 	current = first;
 	lst = lst->next;
 	while (lst)
 	{
-		if ((tmp = (t_list*)malloc(sizeof(t_list))) == NULL)
+		tmp = (t_list *)malloc(sizeof(t_list));
+		if (tmp == NULL)
 			return (NULL);
 		tmp = (*f)(lst);
 		current->next = tmp;

@@ -14,11 +14,12 @@
 
 void	ft_lstadd_tail(t_list **alst, t_list *new)
 {
-	t_list *ptr;
+	t_list	*ptr;
 
 	if (!alst || !new)
 		return ;
-	if (!(ptr = *alst))
+	ptr = *alst;
+	if (!ptr)
 		*alst = new;
 	else
 	{

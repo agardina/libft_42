@@ -12,7 +12,7 @@
 
 #include "ft_printf_prototypes.h"
 
-void			mult_bigint_by_2(t_bigint *big)
+void	mult_bigint_by_2(t_bigint *big)
 {
 	unsigned int	surplus;
 	int				i;
@@ -34,7 +34,7 @@ void			mult_bigint_by_2(t_bigint *big)
 	}
 }
 
-void			div_bigint_by_2(t_bigint *big)
+void	div_bigint_by_2(t_bigint *big)
 {
 	int				i;
 	unsigned int	mod;
@@ -47,7 +47,10 @@ void			div_bigint_by_2(t_bigint *big)
 	while (i < BIGINT_SIZE)
 	{
 		res = ((big->tab)[i] / 2) + mod;
-		mod = (big->tab)[i] % 2 == 1 ? 500000000 : 0;
+		if ((big->tab)[i] % 2 == 1)
+			mod = 500000000;
+		else
+			mod = 0;
 		(big->tab)[i] = res;
 		i++;
 	}
@@ -69,7 +72,7 @@ unsigned int	div_by_10(unsigned int nb, int power)
 	return (nb);
 }
 
-void			add_bigints(t_bigint *big, t_bigint *to_add)
+void	add_bigints(t_bigint *big, t_bigint *to_add)
 {
 	unsigned int	surplus;
 	int				i;

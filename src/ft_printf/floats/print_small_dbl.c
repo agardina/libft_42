@@ -12,9 +12,9 @@
 
 #include "ft_printf_prototypes.h"
 
-int		print_small_dbl(int16_t expo, t_conv *conv, t_bigint *big)
+int	print_small_dbl(int16_t expo, t_conv *conv, t_bigint *big)
 {
-	unsigned int last_case_to_print;
+	unsigned int	last_case_to_print;
 
 	last_case_to_print = (big->tab)[big->last_dec_case];
 	cut_tab(big);
@@ -24,5 +24,7 @@ int		print_small_dbl(int16_t expo, t_conv *conv, t_bigint *big)
 		putc_no_format(conv, '.');
 	if (conv->prec)
 		print_dec_part(big, conv->prec, expo, conv);
-	return (1 + (conv->prec > 0 ? conv->prec + 1 : 0));
+	if (conv->prec > 0)
+		return (1 + conv->prec + 1);
+	return (1);
 }

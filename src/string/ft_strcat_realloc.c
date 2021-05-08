@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_create.c                                      :+:      :+:    :+:   */
+/*   ft_strcat_realloc.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/03 18:29:33 by agardina          #+#    #+#             */
-/*   Updated: 2020/11/03 18:29:36 by agardina         ###   ########.fr       */
+/*   Created: 2021/06/27 16:47:27 by agardina          #+#    #+#             */
+/*   Updated: 2021/06/27 16:47:28 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "dict.h"
 
-t_dict	*dict_create(void)
+char	*ft_strcat_realloc(char **dst, const char *src)
 {
-	t_dict			*new;
-	unsigned int	i;
+	unsigned int	len_dst;
+	unsigned int	len_src;
+	char			*new;
 
-	new = (t_dict *)malloc(sizeof(t_dict));
-	if (!new)
+	if (!dst)
 		return (NULL);
-	new->entries = (t_dict_entry **)malloc(sizeof(t_dict_entry *) * DICT_SIZE);
-	if (!new->entries)
-		return (NULL);
-	i = 0;
-	while (i < DICT_SIZE)
-		new->entries[i++] = NULL;
-	return (new);
+	if (!src)
+		return (*dst);
+	len_dst = ft_strlen(*dst);
+	len_src = ft_strlen(src);
+	new = (char *)malloc(sizeof(char *) * (len_dst + len_src + 1));
+	ft_strcpy(new, *dst);
+	ft_strcat(new + len_dst, src);
+	new[len_dst + len_src] = '\0';
+	free(*dst);
+	*dst = new;
+	return (*dst);
 }

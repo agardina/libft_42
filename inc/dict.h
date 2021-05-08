@@ -15,14 +15,14 @@
 # define DICT_H
 # define DICT_SIZE 10000
 
-typedef struct			s_dict_entry
+typedef struct s_dict_entry
 {
 	struct s_dict_entry	*next;
 	char				*key;
 	char				*value;
 }						t_dict_entry;
 
-typedef struct			s_dict
+typedef struct s_dict
 {
 	t_dict_entry		**entries;
 }						t_dict;

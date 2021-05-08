@@ -14,8 +14,8 @@
 
 static int	get_len(int n)
 {
-	int result;
-	int value;
+	int	result;
+	int	value;
 
 	result = 1;
 	if (n < 0)
@@ -49,13 +49,14 @@ static void	fill_str(int n, char *str, int index)
 	str[index] = (value % 10) + '0';
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		len;
 	char	*str;
 
 	len = get_len(n);
-	if ((str = (char*)malloc(sizeof(char) * (size_t)(len + 1))) == NULL)
+	str = (char *)malloc(sizeof(char) * (size_t)(len + 1));
+	if (str == NULL)
 		return (NULL);
 	fill_str(n, str, len - 1);
 	str[len] = '\0';

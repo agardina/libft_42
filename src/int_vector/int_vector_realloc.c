@@ -18,7 +18,8 @@ void	int_vector_realloc(t_int_vector *vect)
 
 	if (!vect)
 		return ;
-	if (!(new = (int*)ft_memalloc(sizeof(int) * vect->total_size * 2)))
+	new = (int *)ft_memalloc(sizeof(int) * vect->total_size * 2);
+	if (!new)
 	{
 		free(vect->tab);
 		vect->tab = NULL;

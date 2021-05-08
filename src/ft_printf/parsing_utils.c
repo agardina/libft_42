@@ -27,19 +27,19 @@ void	init_conv(t_conv *c)
 	c->type = 0;
 }
 
-int		is_conv_char(char c)
+int	is_conv_char(char c)
 {
 	return (is_lm(c) || ft_isdigit(c) || c == '.' || c == '-'
-			|| c == '#' || c == '+' || c == ' ' || c == '*');
+		|| c == '#' || c == '+' || c == ' ' || c == '*');
 }
 
-int		is_lm(char c)
+int	is_lm(char c)
 {
 	return (c == 'h' || c == 'l' || c == 'L');
 }
 
-int		is_type(char c)
+int	is_type(char c)
 {
 	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i'
-			|| c == 'o' || c == 'u' || c == 'x' || c == 'X' || c == 'f');
+		|| c == 'o' || c == 'u' || c == 'x' || c == 'X' || c == 'f');
 }

@@ -16,7 +16,8 @@ int	queue_enqueue(t_queue **queue, const void *content)
 {
 	t_queue	*new;
 
-	if (!(new = ft_lstnew(content, sizeof(*content))))
+	new = ft_lstnew(content, sizeof(*content));
+	if (!new)
 		return (-1);
 	ft_lstadd_tail(queue, new);
 	return (0);

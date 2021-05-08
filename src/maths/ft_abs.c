@@ -14,5 +14,7 @@
 
 unsigned long long int	ft_abs(long long int a)
 {
-	return (a >= 0 ? (unsigned long long)a : (unsigned long long)-a);
+	if (a >= 0)
+		return ((unsigned long long)a);
+	return ((unsigned long long) -a);
 }

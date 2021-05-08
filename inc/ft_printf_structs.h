@@ -14,14 +14,14 @@
 
 # define FT_PRINTF_STRUCTS_H
 
-typedef struct	s_buf
+typedef struct s_buf
 {
 	char		b[FT_PRINTF_BUFF_SIZE + 1];
 	char		pad[3];
 	int			index;
 }				t_buf;
 
-typedef struct	s_conv
+typedef struct s_conv
 {
 	t_buf		buf;
 	int			width;
@@ -39,13 +39,13 @@ typedef struct	s_conv
 	char		pad[2];
 }				t_conv;
 
-typedef union	u_dbl_bits
+typedef union u_dbl_bits
 {
 	double		f;
 	uint64_t	u;
 }				t_dbl_bits;
 
-typedef struct	s_dbl
+typedef struct s_dbl
 {
 	t_dbl_bits	bits;
 	uint64_t	mant;
@@ -54,13 +54,13 @@ typedef struct	s_dbl
 	char		pad[2];
 }				t_dbl;
 
-typedef union	u_ldbl_bits
+typedef union u_ldbl_bits
 {
 	long double	f;
 	uint16_t	u[8];
 }				t_ldbl_bits;
 
-typedef struct	s_ldbl
+typedef struct s_ldbl
 {
 	t_ldbl_bits	bits;
 	uint64_t	mant;
@@ -76,7 +76,7 @@ typedef struct	s_ldbl
 
 typedef unsigned int	t_bigtab[BIGINT_SIZE];
 
-typedef struct	s_bigint
+typedef struct s_bigint
 {
 	t_bigtab	tab;
 	int			first_int_case;
@@ -88,7 +88,7 @@ typedef struct	s_bigint
 	int			is_long;
 }				t_bigint;
 
-typedef struct	s_color
+typedef struct s_color
 {
 	char		*name;
 	char		*format;

@@ -12,7 +12,7 @@
 
 #include "ft_printf_prototypes.h"
 
-int		print_int_part(t_bigint *big, int16_t expo, int prec, t_conv *conv)
+int	print_int_part(t_bigint *big, int16_t expo, int prec, t_conv *conv)
 {
 	int				res;
 	unsigned int	last_digits;

@@ -15,7 +15,7 @@
 
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	t_list *ptr;
+	t_list	*ptr;
 
 	if (!alst || !*alst)
 		return ;

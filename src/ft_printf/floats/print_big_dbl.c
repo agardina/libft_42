@@ -12,7 +12,7 @@
 
 #include "ft_printf_prototypes.h"
 
-int		print_big_dbl(int16_t expo, t_conv *conv, t_bigint *big)
+int	print_big_dbl(int16_t expo, t_conv *conv, t_bigint *big)
 {
 	int				res;
 	unsigned int	last_case_to_print;
@@ -25,7 +25,9 @@ int		print_big_dbl(int16_t expo, t_conv *conv, t_bigint *big)
 		putc_no_format(conv, '.');
 	if (conv->prec)
 		print_dec_part(big, conv->prec, expo, conv);
-	return (res + (conv->prec > 0 ? conv->prec + 1 : 0));
+	if (conv->prec > 0)
+		return (res + conv->prec + 1);
+	return (res);
 }
 
 void	print_first_dec(unsigned int nb, int *prec, int *index, t_conv *conv)
@@ -38,7 +40,8 @@ void	print_first_dec(unsigned int nb, int *prec, int *index, t_conv *conv)
 	i = 0;
 	mod = 1;
 	min = ft_min(*prec, 6);
-	if ((len = get_uint_len(nb)) > min)
+	len = get_uint_len(nb);
+	if (len > min)
 	{
 		while (i < min)
 		{

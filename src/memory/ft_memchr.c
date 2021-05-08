@@ -20,7 +20,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	i = 0;
 	u = (unsigned char)c;
-	ptr = (unsigned char*)s;
+	ptr = (unsigned char *)s;
 	while (i < n)
 	{
 		if (*(ptr + i) == u)

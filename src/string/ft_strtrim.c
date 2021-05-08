@@ -13,7 +13,20 @@
 #include "libft.h"
 #include <stdlib.h>
 
-char		*ft_strtrim(char const *s)
+static void	fill_new_str(char *new, char const *s, int start, int end)
+{
+	int	i;
+
+	i = 0;
+	while (i < end - start + 1)
+	{
+		new[i] = s[start + i];
+		i++;
+	}
+	new[i] = '\0';
+}
+
+char	*ft_strtrim(char const *s)
 {
 	int		i;
 	int		start;
@@ -30,14 +43,9 @@ char		*ft_strtrim(char const *s)
 	while (i >= 0 && (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'))
 		i--;
 	end = i;
-	if (!(new = (char*)malloc(sizeof(char) * (end - start + 2))))
+	new = (char *)malloc(sizeof(char) * (end - start + 2));
+	if (!new)
 		return (NULL);
-	i = 0;
-	while (i < end - start + 1)
-	{
-		new[i] = s[start + i];
-		i++;
-	}
-	new[i] = '\0';
+	fill_new_str(new, s, start, end);
 	return (new);
 }

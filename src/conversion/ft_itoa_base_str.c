@@ -15,8 +15,8 @@
 
 static int	err_base(char *base)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	if (!base || ft_strlen(base) < 2 || ft_strlen(base) > 16)
 		return (1);
@@ -80,7 +80,7 @@ static void	convert_nbr(int nbr, char *base, char *str, int index)
 	str[index] = base[value % len_base];
 }
 
-char		*ft_itoa_base_str(int nbr, char *base)
+char	*ft_itoa_base_str(int nbr, char *base)
 {
 	int		str_len;
 	char	*str;
@@ -88,7 +88,8 @@ char		*ft_itoa_base_str(int nbr, char *base)
 	if (!err_base(base))
 	{
 		str_len = get_str_len(nbr, base);
-		if ((str = (char*)malloc(sizeof(char) * ((size_t)str_len + 1))) != NULL)
+		str = (char *)malloc(sizeof(char) * ((size_t)str_len + 1));
+		if (str != NULL)
 		{
 			convert_nbr(nbr, base, str, str_len - 1);
 			str[str_len] = '\0';

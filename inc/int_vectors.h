@@ -15,7 +15,7 @@
 # define INT_VECTORS_H
 # define INT_VECTOR_INIT_SIZE 1000
 
-typedef struct		s_int_vector
+typedef struct s_int_vector
 {
 	int				*tab;
 	unsigned int	length;

@@ -12,7 +12,7 @@
 
 char	is_int_tab_sorted(int *tab, unsigned int size)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < size - 1)

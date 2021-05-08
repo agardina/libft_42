@@ -16,7 +16,10 @@ void	print_dec_part(t_bigint *big, int prec, int16_t expo, t_conv *conv)
 {
 	int	i;
 
-	i = (expo >= 0 ? BIGINT_SIZE - 7 : 1);
+	if (expo >= 0)
+		i = BIGINT_SIZE - 7;
+	else
+		i = 1;
 	if (expo >= 0 && !big->is_long)
 		print_first_dec((big->tab)[BIGINT_SIZE - 7], &prec, &i, conv);
 	while (i <= big->last_dec_case)

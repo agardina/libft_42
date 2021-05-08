@@ -12,15 +12,29 @@
 
 #include "ft_printf_prototypes.h"
 
-int				print_d(va_list ap, t_conv *conv)
+static	unsigned int	compute_len(long long int nb, t_conv *conv)
+{
+	if (!nb && !conv->prec)
+		return (0);
+	return ((unsigned int)get_uint_len(ft_abs(nb)));
+}
+
+static	int	compute_prefix_len(long long int nb, t_conv *conv)
+{
+	if (nb < 0 || conv->plus || conv->space)
+		return (1);
+	return (0);
+}
+
+int	print_d(va_list ap, t_conv *conv)
 {
 	long long int	nb;
 	unsigned int	len;
 	int				prefix_len;
 
 	nb = convert_s_number(ap, conv);
-	len = (!nb && !conv->prec) ? 0 : get_uint_len(ft_abs(nb));
-	prefix_len = (nb < 0 || conv->plus || conv->space) ? 1 : 0;
+	len = compute_len(nb, conv);
+	prefix_len = compute_prefix_len(nb, conv);
 	if (!conv->minus && conv->width > 0 && !conv->zero)
 		put_spaces(conv->width - ft_max(len, conv->prec) - prefix_len, conv);
 	print_s_prefix(nb, conv);
@@ -35,12 +49,12 @@ int				print_d(va_list ap, t_conv *conv)
 		ft_putnbr_buf(conv, ft_abs(nb));
 	if (conv->minus)
 		put_spaces(conv->width - ft_max(len, conv->prec)
-				- prefix_len, conv);
+			- prefix_len, conv);
 	return (ft_max(ft_max(len + prefix_len, conv->prec + prefix_len),
-				conv->width));
+			conv->width));
 }
 
-void			print_s_prefix(long long nb, t_conv *conv)
+void	print_s_prefix(long long nb, t_conv *conv)
 {
 	if (nb >= 0 && conv->plus)
 		putc_no_format(conv, '+');
