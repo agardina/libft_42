@@ -14,7 +14,8 @@ NAME = libft.a
 ## HEADERS
 
 HDR_DIR = ./inc/
-HDR_FILES = dict.h \
+HDR_FILES = btree.h \
+				dict.h \
 				doubly_linked_list.h \
 				ft_printf_prototypes.h \
 				ft_printf_structs.h \
@@ -29,6 +30,11 @@ HDR = $(addprefix $(HDR_DIR), $(HDR_FILES))
 ## SOURCES
 
 SRC_DIR = ./src/
+
+# Binary trees (with strings as content)
+SRC_FILES += btree_str/btree_str_add_node.c
+SRC_FILES += btree_str/btree_str_clean.c
+SRC_FILES += btree_str/btree_str_init.c
 
 # Char
 SRC_FILES += char/ft_isalnum.c
@@ -224,6 +230,7 @@ $(NAME): $(OBJ_DIR) $(OBJ)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/btree_str
 	@mkdir -p $(OBJ_DIR)/char
 	@mkdir -p $(OBJ_DIR)/conversion
 	@mkdir -p $(OBJ_DIR)/dict
