@@ -1,5 +1,5 @@
 *.o
 *.a
 a.out
-main.c
+main*.c
 .DS_Store
