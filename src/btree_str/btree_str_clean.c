@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static void	ft_btree_str_clean_nodes(t_btree *tree, t_btree_node *node)
+static void	ft_btree_str_clean_nodes(t_btree_str *tree, t_btree_str_node *node)
 {
 	if (node->left_child)
 		ft_btree_str_clean_nodes(tree, node->left_child);
@@ -22,7 +22,7 @@ static void	ft_btree_str_clean_nodes(t_btree *tree, t_btree_node *node)
 	free(node);
 }
 
-void	ft_btree_str_clean(t_btree *tree)
+void	ft_btree_str_clean(t_btree_str *tree)
 {
 	if (tree->root)
 		ft_btree_str_clean_nodes(tree, tree->root);

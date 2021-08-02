@@ -18,7 +18,7 @@
 
 typedef struct s_btree_gen_node
 {
-	char					*content;
+	void					*content;
 	struct s_btree_gen_node	*left_child;
 	struct s_btree_gen_node	*right_child;
 	struct s_btree_gen_node	*parent;

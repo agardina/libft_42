@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_vector_create.c                                :+:      :+:    :+:   */
+/*   str_vector_append.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agardina <agardina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 16:35:47 by agardina          #+#    #+#             */
-/*   Updated: 2020/11/09 16:35:48 by agardina         ###   ########.fr       */
+/*   Created: 2021/08/02 15:59:02 by agardina          #+#    #+#             */
+/*   Updated: 2021/08/02 15:59:03 by agardina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_int_vector	*int_vector_create(void)
+int	str_vector_append(t_str_vector *vect, char *str)
 {
-	t_int_vector	*new;
-
-	new = (t_int_vector *)ft_memalloc(sizeof(t_int_vector));
-	if (!new)
-		return (NULL);
-	new->tab = (int *)ft_memalloc(sizeof(int) * INT_VECTOR_INIT_SIZE);
-	if (!new->tab)
+	if (!vect)
+		return (1);
+	if (vect->used_size == vect->total_size)
 	{
-		free(new);
-		return (NULL);
+		str_vector_realloc(vect);
+		if (!vect->tab)
+			return (1);
 	}
-	new->total_size = INT_VECTOR_INIT_SIZE;
-	new->length = 0;
-	return (new);
+	vect->tab[vect->used_size] = ft_strdup(str);
+	if (!vect->tab[vect->used_size])
+		return (1);
+	vect->used_size++;
+	return (0);
 }

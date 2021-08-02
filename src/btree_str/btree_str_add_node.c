@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-static t_btree_node	*ft_btree_str_create_node(char *content)
+static t_btree_str_node	*ft_btree_str_create_node(char *content)
 {
-	t_btree_node	*new;
+	t_btree_str_node	*new;
 
-	new = (t_btree_node *)malloc(sizeof(t_btree_node));
+	new = (t_btree_str_node *)malloc(sizeof(t_btree_str_node));
 	if (!new)
 		return (NULL);
 	new->left_child = NULL;
@@ -32,8 +32,8 @@ static t_btree_node	*ft_btree_str_create_node(char *content)
 	return (new);
 }
 
-static void	ft_btree_str_insert_duplicate(t_btree_node *parent,
-		t_btree_node **new)
+static void	ft_btree_str_insert_duplicate(t_btree_str_node *parent,
+		t_btree_str_node **new)
 {
 	parent->count++;
 	free((*new)->content);
@@ -41,8 +41,8 @@ static void	ft_btree_str_insert_duplicate(t_btree_node *parent,
 	*new = NULL;
 }
 
-static void	ft_btree_str_node_insertion(t_btree *tree, t_btree_node *parent,
-	t_btree_node **new, int left_child)
+static void	ft_btree_str_node_insertion(t_btree_str *tree,
+			t_btree_str_node *parent, t_btree_str_node **new, int left_child)
 {
 	if (left_child)
 	{
@@ -57,8 +57,8 @@ static void	ft_btree_str_node_insertion(t_btree *tree, t_btree_node *parent,
 	tree->nb_nodes++;
 }
 
-static void	ft_btree_str_insert_node(t_btree *tree, t_btree_node *parent,
-	t_btree_node **new)
+static void	ft_btree_str_insert_node(t_btree_str *tree,
+			t_btree_str_node *parent, t_btree_str_node **new)
 {
 	int	ret;
 
@@ -78,9 +78,9 @@ static void	ft_btree_str_insert_node(t_btree *tree, t_btree_node *parent,
 	}
 }
 
-int	ft_btree_str_add_node(t_btree *tree, char *content)
+int	ft_btree_str_add_node(t_btree_str *tree, char *content)
 {
-	t_btree_node	*new;
+	t_btree_str_node	*new;
 
 	new = ft_btree_str_create_node(content);
 	if (!new)

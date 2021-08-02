@@ -26,6 +26,7 @@ HDR_FILES = btree_generic.h \
 				list.h \
 				queue.h \
 				stack.h \
+				str_vectors.h
 HDR = $(addprefix $(HDR_DIR), $(HDR_FILES))
 
 ## SOURCES
@@ -216,6 +217,13 @@ SRC_FILES += string/ft_strsub.c
 SRC_FILES += string/ft_strtrim.c
 SRC_FILES += string/ft_trim_str.c
 
+# String vector
+SRC_FILES += str_vector/str_vector_append.c
+SRC_FILES += str_vector/str_vector_create.c
+SRC_FILES += str_vector/str_vector_destroy.c
+SRC_FILES += str_vector/str_vector_print.c
+SRC_FILES += str_vector/str_vector_realloc.c
+
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 ## OBJECT FILES
@@ -256,6 +264,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)/sort
 	@mkdir -p $(OBJ_DIR)/stack
 	@mkdir -p $(OBJ_DIR)/string
+	@mkdir -p $(OBJ_DIR)/str_vector
 
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c $(HDR) Makefile
 	@$(CC) $(CFLAGS) -I$(HDR_DIR) -c -o $@ $<

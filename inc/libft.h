@@ -22,6 +22,7 @@
 # include "list.h"
 # include "queue.h"
 # include "stack.h"
+# include "str_vectors.h"
 
 typedef struct s_word
 {

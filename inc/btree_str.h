@@ -16,23 +16,23 @@
 
 # include "libft.h"
 
-typedef struct s_btree_node
+typedef struct s_btree_str_node
 {
-	char				*content;
-	struct s_btree_node	*left_child;
-	struct s_btree_node	*right_child;
-	struct s_btree_node	*parent;
-	int					count;
-}	t_btree_node;
+	char					*content;
+	struct s_btree_str_node	*left_child;
+	struct s_btree_str_node	*right_child;
+	struct s_btree_str_node	*parent;
+	int						count;
+}	t_btree_str_node;
 
-typedef struct s_btree
+typedef struct s_btree_str
 {
-	t_btree_node	*root;
-	unsigned int	nb_nodes;
-}	t_btree;
+	t_btree_str_node	*root;
+	unsigned int		nb_nodes;
+}	t_btree_str;
 
-int		ft_btree_str_add_node(t_btree *tree, char *content);
-void	ft_btree_str_clean(t_btree *tree);
-void	ft_btree_str_init(t_btree *tree);
+int		ft_btree_str_add_node(t_btree_str *tree, char *content);
+void	ft_btree_str_clean(t_btree_str *tree);
+void	ft_btree_str_init(t_btree_str *tree);
 
 #endif
