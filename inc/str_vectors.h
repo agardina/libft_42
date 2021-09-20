@@ -32,7 +32,7 @@ typedef struct s_str_vector
 ** \retval 0 if success
 ** \retval 1 otherwise
 */
-int				str_vector_append(t_str_vector *vect, char *str);
+int				str_vector_append(t_str_vector *vect, const char *str);
 /**
 ** \brief Create a string vector
 **

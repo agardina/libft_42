@@ -19,7 +19,7 @@ static void	ft_btree_gen_clean_nodes(t_btree_gen *tree, t_btree_gen_node *node)
 	if (node->right_child)
 		ft_btree_gen_clean_nodes(tree, node->right_child);
 	if (tree->free_content)
-		tree->free_content(node->content);
+		tree->free_content(&node->content);
 	free(node);
 }
 

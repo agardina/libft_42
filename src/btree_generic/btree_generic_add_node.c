@@ -39,7 +39,7 @@ static void	ft_btree_gen_insert_duplicate(t_btree_gen *tree,
 {
 	parent->count++;
 	if (tree->free_content)
-		tree->free_content((*new)->content);
+		tree->free_content(&(*new)->content);
 	free(*new);
 	*new = NULL;
 }
