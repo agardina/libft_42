@@ -30,6 +30,7 @@ typedef struct s_conv
 	int			f_size;
 	int			type;
 	int			res;
+	int			fd;
 	char		other_char;
 	char		minus;
 	char		plus;

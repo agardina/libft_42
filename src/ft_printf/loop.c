@@ -12,7 +12,7 @@
 
 #include "ft_printf_prototypes.h"
 
-int	ft_printf(const char *restrict format, ...)
+int	ft_dprintf(int fd, const char *restrict format, ...)
 {
 	va_list	ap;
 	t_conv	conv;
@@ -20,6 +20,7 @@ int	ft_printf(const char *restrict format, ...)
 
 	if (!format)
 		return (-1);
+	conv.fd = fd;
 	(conv.buf).index = 0;
 	conv.res = 0;
 	p = (char *)format;
@@ -31,7 +32,32 @@ int	ft_printf(const char *restrict format, ...)
 		if (*p && *p == '%')
 			print_format_string(ap, &conv, &p);
 	}
-	print_buffer(&(conv.buf));
+	print_buffer(conv.fd, &(conv.buf));
+	va_end(ap);
+	return (conv.res);
+}
+
+int	ft_printf(const char *restrict format, ...)
+{
+	va_list	ap;
+	t_conv	conv;
+	char	*p;
+
+	if (!format)
+		return (-1);
+	conv.fd = 1;
+	(conv.buf).index = 0;
+	conv.res = 0;
+	p = (char *)format;
+	va_start(ap, format);
+	while (*p)
+	{
+		if (*p && *p != '%')
+			print_no_format(&conv, &p);
+		if (*p && *p == '%')
+			print_format_string(ap, &conv, &p);
+	}
+	print_buffer(conv.fd, &(conv.buf));
 	va_end(ap);
 	return (conv.res);
 }
@@ -58,7 +84,7 @@ void	print_no_format(t_conv *conv, char **str)
 
 int	print_format_string(va_list ap, t_conv *conv, char **str)
 {
-	static	int	(*f[11])(va_list ap, t_conv *c) = {&print_c,
+	static int	(*f[11])(va_list ap, t_conv *c) = {&print_c,
 		&print_d, &print_f, &print_lf, &print_o, &print_p, &print_s,
 		&print_u, &print_x, &print_big_x, &print_b};
 
