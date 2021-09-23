@@ -53,6 +53,7 @@ int					print_b(va_list ap, t_conv *conv);
 int					color_found(char **str, t_color color, t_conv *conv);
 long long int		convert_s_number(va_list ap, t_conv *conv);
 unsigned long long	convert_u_number(va_list ap, t_conv *conv);
+int					ft_dprintf(int fd, const char *restrict format, ...);
 int					ft_printf(const char *restrict format, ...);
 void				ft_putnbr_base_buf(t_conv *conv, unsigned long long nb,
 						char *base);
@@ -70,7 +71,7 @@ void				init_conv(t_conv *conv);
 int					is_conv_char(char c);
 int					is_lm(char c);
 int					is_type(char c);
-void				print_buffer(t_buf *buf);
+void				print_buffer(int fd, t_buf *buf);
 int					print_format_string(va_list ap, t_conv *conv, char **str);
 int					print_int(va_list ap, t_buf buf, t_conv *conv);
 void				print_no_format(t_conv *conv, char **str);
