@@ -12,16 +12,21 @@
 
 #include "ft_printf_prototypes.h"
 
-void	print_buffer(t_buf *buf)
+int	print_buffer(int fd, t_buf *buf)
 {
-	write(1, buf->b, buf->index);
+	ssize_t	ret;
+
+	ret = write(fd, buf->b, buf->index);
+	if (ret == -1)
+		return (-1);
+	return (0);
 }
 
 int	putc_no_format(t_conv *conv, char c)
 {
 	if ((conv->buf).index == FT_PRINTF_BUFF_SIZE - 1)
 	{
-		print_buffer(&(conv->buf));
+		print_buffer(conv->fd, &(conv->buf));
 		(conv->buf).index = 0;
 	}
 	(conv->buf).b[(conv->buf).index] = c;

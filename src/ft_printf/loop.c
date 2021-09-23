@@ -12,31 +12,7 @@
 
 #include "ft_printf_prototypes.h"
 
-int	ft_printf(const char *restrict format, ...)
-{
-	va_list	ap;
-	t_conv	conv;
-	char	*p;
-
-	if (!format)
-		return (-1);
-	(conv.buf).index = 0;
-	conv.res = 0;
-	p = (char *)format;
-	va_start(ap, format);
-	while (*p)
-	{
-		if (*p && *p != '%')
-			print_no_format(&conv, &p);
-		if (*p && *p == '%')
-			print_format_string(ap, &conv, &p);
-	}
-	print_buffer(&(conv.buf));
-	va_end(ap);
-	return (conv.res);
-}
-
-void	print_no_format(t_conv *conv, char **str)
+static void	print_no_format(t_conv *conv, char **str)
 {
 	while (**str && **str != '%')
 	{
@@ -56,9 +32,9 @@ void	print_no_format(t_conv *conv, char **str)
 	}
 }
 
-int	print_format_string(va_list ap, t_conv *conv, char **str)
+static int	print_format_string(va_list ap, t_conv *conv, char **str)
 {
-	static	int	(*f[11])(va_list ap, t_conv *c) = {&print_c,
+	static int	(*f[11])(va_list ap, t_conv *c) = {&print_c,
 		&print_d, &print_f, &print_lf, &print_o, &print_p, &print_s,
 		&print_u, &print_x, &print_big_x, &print_b};
 
@@ -69,4 +45,53 @@ int	print_format_string(va_list ap, t_conv *conv, char **str)
 	get_conv_info(ap, str, conv);
 	f[conv->type](ap, conv);
 	return (1);
+}
+
+static int	ft_printf_loop(int fd, const char *restrict format, va_list ap)
+{
+	t_conv	conv;
+	char	*p;
+	int		ret;
+
+	conv.fd = fd;
+	(conv.buf).index = 0;
+	conv.res = 0;
+	p = (char *)format;
+	while (*p)
+	{
+		if (*p && *p != '%')
+			print_no_format(&conv, &p);
+		else if (*p && *p == '%')
+			print_format_string(ap, &conv, &p);
+	}
+	ret = print_buffer(conv.fd, &(conv.buf));
+	if (ret == -1)
+		return (-1);
+	return (conv.res);
+}
+
+int	ft_printf(const char *restrict format, ...)
+{
+	va_list	ap;
+	int		ret;
+
+	if (!format)
+		return (-1);
+	va_start(ap, format);
+	ret = ft_printf_loop(1, format, ap);
+	va_end(ap);
+	return (ret);
+}
+
+int	ft_dprintf(int fd, const char *restrict format, ...)
+{
+	va_list	ap;
+	int		ret;
+
+	if (!format)
+		return (-1);
+	va_start(ap, format);
+	ret = ft_printf_loop(fd, format, ap);
+	va_end(ap);
+	return (ret);
 }
