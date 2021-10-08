@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	str_vector_append(t_str_vector *vect, char *str)
+int	str_vector_append(t_str_vector *vect, const char *str)
 {
 	if (!vect)
 		return (1);

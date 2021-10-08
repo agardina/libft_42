@@ -30,8 +30,8 @@ typedef struct s_btree_gen
 	t_btree_gen_node	*root;
 	unsigned int		nb_nodes;
 	void				*(*create_content)(void *content);
-	void				(*free_content)(void *content);
-	int					(*compare_content)(void *content1, void *content2);
+	void				(*free_content)(void **content);
+	int					(*cmp_content)(void *content1, void *content2);
 }	t_btree_gen;
 
 int		ft_btree_gen_add_node(t_btree_gen *tree, void *content);

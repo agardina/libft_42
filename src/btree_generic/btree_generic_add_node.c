@@ -39,7 +39,7 @@ static void	ft_btree_gen_insert_duplicate(t_btree_gen *tree,
 {
 	parent->count++;
 	if (tree->free_content)
-		tree->free_content((*new)->content);
+		tree->free_content(&(*new)->content);
 	free(*new);
 	*new = NULL;
 }
@@ -66,8 +66,8 @@ static void	ft_btree_gen_insert_node(t_btree_gen *tree,
 	int	ret;
 
 	ret = 0;
-	if (tree->compare_content)
-		ret = tree->compare_content((*new)->content, parent->content);
+	if (tree->cmp_content)
+		ret = tree->cmp_content((*new)->content, parent->content);
 	if (ret == 0)
 		return (ft_btree_gen_insert_duplicate(tree, parent, new));
 	if (ret < 0 && !parent->left_child)

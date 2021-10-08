@@ -14,7 +14,7 @@
 
 int	ft_btree_gen_init(t_btree_gen *tree)
 {
-	tree->compare_content = NULL;
+	tree->cmp_content = NULL;
 	tree->create_content = NULL;
 	tree->free_content = NULL;
 	tree->nb_nodes = 0;
