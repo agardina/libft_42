@@ -214,6 +214,8 @@ SRC_FILES += string/ft_strrchr.c
 SRC_FILES += string/ft_strsplit.c
 SRC_FILES += string/ft_strstr.c
 SRC_FILES += string/ft_strsub.c
+SRC_FILES += string/ft_strtolower.c
+SRC_FILES += string/ft_strtoupper.c
 SRC_FILES += string/ft_strtrim.c
 SRC_FILES += string/ft_trim_str.c
 

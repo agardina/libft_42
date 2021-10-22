@@ -102,6 +102,8 @@ char				*ft_strrchr(const char *s, int c);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_strstr(const char *big, const char *little);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
+char				*ft_strtolower(char *str);
+char				*ft_strtoupper(char *str);
 char				*ft_strtrim(char const *s);
 int					ft_trim_str_after_char_excl(char **str, const char c,
 						const int delete_if_no_char);
