@@ -58,6 +58,7 @@ SRC_FILES += conversion/ft_atol.c
 SRC_FILES += conversion/ft_convert_base.c
 SRC_FILES += conversion/ft_itoa.c
 SRC_FILES += conversion/ft_itoa_base_str.c
+SRC_FILES += conversion/ft_lltoa.c
 
 # Dict
 SRC_FILES += dict/dict_create.c

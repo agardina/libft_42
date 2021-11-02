@@ -52,6 +52,7 @@ int					ft_isdigit(int c);
 int					ft_isprint(int c);
 char				*ft_itoa(int n);
 char				*ft_itoa_base_str(int nbr, char *base);
+char				*ft_lltoa(long long n);
 int					ft_max(int a, int b);
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
