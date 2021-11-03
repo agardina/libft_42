@@ -75,7 +75,7 @@ typedef struct s_ldbl
 ** On limite la valeur de chaque case à 999 999 999.
 */
 
-typedef unsigned int	t_bigtab[BIGINT_SIZE];
+typedef unsigned int	t_bigtab[1000];
 
 typedef struct s_bigint
 {
