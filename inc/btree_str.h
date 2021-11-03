@@ -23,12 +23,14 @@ typedef struct s_btree_str_node
 	struct s_btree_str_node	*right_child;
 	struct s_btree_str_node	*parent;
 	int						count;
+	char					padding[4];
 }	t_btree_str_node;
 
 typedef struct s_btree_str
 {
 	t_btree_str_node	*root;
 	unsigned int		nb_nodes;
+	char				padding[4];
 }	t_btree_str;
 
 int		ft_btree_str_add_node(t_btree_str *tree, char *content);
