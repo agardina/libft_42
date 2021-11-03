@@ -60,10 +60,9 @@ int	ft_trim_str_after_char_excl(char **str, const char c,
 	{
 		p++;
 		len = ft_strlen(p);
-		new = (char *)malloc(sizeof(char) * (len + 1));
+		new = ft_strdup(p);
 		if (!new)
 			return (1);
-		new = ft_strdup(p);
 		new[len] = '\0';
 		free(*str);
 		*str = new;

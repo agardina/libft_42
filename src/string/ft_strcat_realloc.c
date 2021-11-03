@@ -24,7 +24,7 @@ char	*ft_strcat_realloc(char **dst, const char *src)
 		return (*dst);
 	len_dst = ft_strlen(*dst);
 	len_src = ft_strlen(src);
-	new = (char *)malloc(sizeof(char *) * (len_dst + len_src + 1));
+	new = (char *)malloc(sizeof(char) * (len_dst + len_src + 1));
 	ft_strcpy(new, *dst);
 	ft_strcat(new + len_dst, src);
 	new[len_dst + len_src] = '\0';

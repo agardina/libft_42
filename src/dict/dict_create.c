@@ -23,7 +23,10 @@ t_dict	*dict_create(void)
 		return (NULL);
 	new->entries = (t_dict_entry **)malloc(sizeof(t_dict_entry *) * DICT_SIZE);
 	if (!new->entries)
+	{
+		free(new);
 		return (NULL);
+	}
 	i = 0;
 	while (i < DICT_SIZE)
 		new->entries[i++] = NULL;

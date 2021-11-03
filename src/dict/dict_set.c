@@ -24,12 +24,19 @@ static t_dict_entry	*dict_pair(char *key, char *value)
 	len = ft_strlen(key);
 	new->key = (char *)malloc(sizeof(char) * (len + 1));
 	if (!new->key)
+	{
+		free(new);
 		return (NULL);
+	}
 	ft_strcpy(new->key, key);
 	len = ft_strlen(value);
 	new->value = (char *)malloc(sizeof(char) * (len + 1));
 	if (!new->value)
+	{
+		free(new->key);
+		free(new);
 		return (NULL);
+	}
 	ft_strcpy(new->value, value);
 	new->next = NULL;
 	return (new);
@@ -64,8 +71,9 @@ char	dict_set(t_dict *dict, char *key, char *value)
 		prev = ptr;
 		ptr = ptr->next;
 	}
-	prev->next = dict_pair(key, value);
-	if (!prev->next)
+	if (prev)
+		prev->next = dict_pair(key, value);
+	if (prev && !prev->next)
 		return (1);
 	return (0);
 }
